@@ -2,6 +2,8 @@
 @section('title', 'Home')
 @section('content')
 
+
+
 <div class="bg-white">
   <!--
     Mobile menu
@@ -41,6 +43,7 @@
             </svg>
           </button>
         </div>
+
 
         <!-- Links -->
         <div class="mt-2">
