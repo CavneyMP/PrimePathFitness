@@ -13,5 +13,7 @@
                 </div>
             </div>
         </div>
+
+        <x-stats-grid />
     </div>
 </x-app-layout>
