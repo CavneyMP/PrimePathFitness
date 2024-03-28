@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+
+        <!-- Welcome message -->
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -16,35 +18,11 @@
         </div>
     </div>
 
+        <!-- Stats Grid -->
     <x-stats-grid/>
 
-    <div class="py-12">
-  <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-    <div class="flex -mx-4">
-      <div class="w-1/3 px-4">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 text-gray-900 dark:text-gray-100">
-            Workout Plan
-          </div>
-        </div>
-      </div>
-      <div class="w-1/3 px-4">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 text-gray-900 dark:text-gray-100">
-            Meal Plan
-          </div>
-        </div>
-      </div>
-      <div class="w-1/3 px-4">
-        <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="p-6 text-gray-900 dark:text-gray-100">
-            Metrics
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Site Area Blocks -->
+    <x-site-area-triple-block/>
 
 
 </x-app-layout>
