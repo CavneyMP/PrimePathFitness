@@ -18,11 +18,16 @@
         </div>
     </div>
 
-        <!-- Stats Grid -->
+    <!-- Stats Grid -->
     <x-stats-grid/>
 
-            <!-- Site Area Blocks -->
+    <!-- Site Area Blocks -->
     <x-site-area-triple-block/>
+
+    <!-- Site Area Blocks -->
+    <x-faq_box/>
+
+    
 
 
 </x-app-layout>
