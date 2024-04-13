@@ -16,7 +16,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('user_exercise_logs', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // PK
+            $table->foreignId('user_workout_id')->constrained('user_workouts'); // FK to `user_workouts`
+            $table->foreignId('exercise_id')->constrained(); // FK to `exercises`
+            $table->integer('sets');
+            $table->integer('reps');
+            $table->float('weight');
             $table->timestamps();
         });
     }
