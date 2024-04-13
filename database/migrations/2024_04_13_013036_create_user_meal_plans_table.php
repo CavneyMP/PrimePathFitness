@@ -17,6 +17,10 @@ return new class extends Migration
     {
         Schema::create('user_meal_plans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained(); // FK to `users`
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
+            $table->boolean('active');
             $table->timestamps();
         });
     }
