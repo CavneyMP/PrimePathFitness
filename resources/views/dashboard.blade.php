@@ -24,7 +24,10 @@
     <!-- Site Area Blocks -->
     <x-site-area-triple-block/>
 
-    <!-- Site Area Blocks -->
+    <x-boxes/>
+
+
+    <!-- FAQ box -->
     <x-faq_box/>
 
     
