@@ -16,7 +16,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('workout_exercises', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // PK
+            $table->foreignId('workout_id')->constrained(); // FK to `workouts`
+            $table->foreignId('exercise_id')->constrained(); // FK to `exercises`
             $table->timestamps();
         });
     }
