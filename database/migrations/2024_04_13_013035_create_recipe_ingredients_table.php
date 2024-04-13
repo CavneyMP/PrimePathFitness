@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+    /**
+     * Connect recipes with ingredients required and the quantity of each ingredeint.
+     */
+
 return new class extends Migration
 {
     /**

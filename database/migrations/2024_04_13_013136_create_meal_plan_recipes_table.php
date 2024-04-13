@@ -4,6 +4,10 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+    /**
+     * Table to adjust recipes to the user's nutritional needs within their meal plans.
+     */
+
 return new class extends Migration
 {
     /**
