@@ -15,7 +15,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ingredients', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // PK
+            $table->string('name'); // Name of ingredient
+            $table->float('calories_per_unit'); // Kcal per unit
+            $table->float('protein_per_uni'); // 
+            $table->float('carbs_per_unit');
+            $table->float('fats_per_unit');
+            $table->string('unit'); // Mesurements 
             $table->timestamps();
         });
     }
