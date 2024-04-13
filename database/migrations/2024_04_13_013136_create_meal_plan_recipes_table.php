@@ -17,6 +17,9 @@ return new class extends Migration
     {
         Schema::create('meal_plan_recipes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('meal_plan_id')->constrained('user_meal_plans'); // FK to `user_meal_plans`
+            $table->foreignId('recipe_id')->constrained(); // FK to `recipes`
+            $table->float('adjusted_quantity');
             $table->timestamps();
         });
     }
