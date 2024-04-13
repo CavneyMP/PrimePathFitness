@@ -17,7 +17,11 @@ return new class extends Migration
     {
         Schema::create('user_workouts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained(); // FK from users 
+            $table->foreignId('workout_id')->constrained(); // FK from workouts
+            $table->string('status'); // Is active?
+            $table->date('date'); // Date
+            $table->timestamps(); // Standard stamp
         });
     }
 
