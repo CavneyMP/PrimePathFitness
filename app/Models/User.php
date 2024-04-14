@@ -52,10 +52,13 @@ class User extends Authenticatable
         'activity_level' => 'string', //Activity level to string
         ];
 
-        // TODO // retreive auth
+        // if validation passed, retreive auth
+        $user = Auth::user();
 
-        // TODO // update metrics with data
+        // update metrics with data
+        $user = update($validatedData);
 
-        // TODO // Will need to direct user to dash after
+        // Direct user to dash after
+        return redirect ('dashboard');
     }
 }
