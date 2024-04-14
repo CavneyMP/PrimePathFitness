@@ -51,5 +51,11 @@ class User extends Authenticatable
         'age' => 'int', // Age to int
         'activity_level' => 'string', //Activity level to string
         ];
+
+        // TODO // retreive auth
+
+        // TODO // update metrics with data
+
+        // TODO // Will need to direct user to dash after
     }
 }
