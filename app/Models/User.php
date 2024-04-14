@@ -6,6 +6,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
+
 
 class User extends Authenticatable
 {
@@ -41,24 +43,21 @@ class User extends Authenticatable
      * Essentially concerts attributes to common data types when getting or setting.
      * @return array<string, string>
      */
-    protected function casts(): array
-    {
-        return [
+    protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-        'height' => 'float', // Height to float
-        'weight' => 'float', // Weight to float
-        'age' => 'int', // Age to int
-        'activity_level' => 'string', //Activity level to string
-        ];
+        'height' => 'float',
+        'weight' => 'float',
+        'age' => 'integer',
+        'activity_level' => 'string',
+    ];
+    
 
-        // if validation passed, retreive auth
+    public function updateMetrics(array $validatedData)
+    {
+        // if validation passed, retrieve auth
         $user = Auth::user();
 
         // update metrics with data
-        $user = update($validatedData);
-
-        // Direct user to dash after
-        return redirect ('dashboard');
+        return $this->update($validatedData);
     }
 }
