@@ -17,13 +17,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'height', 
-        'weight' , 
-        'age',  
-        'activity_level',
+        'name', // User name
+        'email', // User Email
+        'password', // User passwords
+        'height',  // User height
+        'weight' , // User weight
+        'age',  // User age
+        'activity_level', // user activitiy level
     ];
 
     /**
@@ -38,18 +38,18 @@ class User extends Authenticatable
 
     /**
      * Get the attributes that should be cast.
-     *
+     * Essentially concerts attributes to common data types when getting or setting.
      * @return array<string, string>
      */
     protected function casts(): array
     {
         return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'height' => 'float', 
-            'weight' => 'float',
-            'age' => 'int',
-            'activity_level' => 'string',
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+        'height' => 'float', // Height to float
+        'weight' => 'float', // Weight to float
+        'age' => 'int', // Age to int
+        'activity_level' => 'string', //Activity level to string
         ];
     }
 }

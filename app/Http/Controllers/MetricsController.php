@@ -23,6 +23,12 @@ class MetricsController extends Controller
 
     public function processForm(Request $request)
     {
-            //TODO        
+        // Validate the submitted data, an of right type.
+        $validatedData = $request->validate([
+            'height' => 'required|numeric',
+            'weight' => 'required|numeric',
+            'age' => 'required|integer',
+            'activity_level' => 'required|string',
+        ]);     
     }
 }
