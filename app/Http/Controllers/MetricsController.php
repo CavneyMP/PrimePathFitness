@@ -6,29 +6,25 @@ use Illuminate\Http\Request;
 
 class MetricsController extends Controller
 {
-
-        /**
-     * Display the metrics form page
-     */
-    public function showForm()
+    public function store(Request $request)
     {
-        // Returns the view for the metrics form
-
-        return view('metrics.form');
-    }
-
-        /**
-     * Process the submitted metrics form.
-     */
-
-    public function processForm(Request $request)
-    {
-        // Validate the submitted data, an of right type.
         $validatedData = $request->validate([
-            'height' => 'required|numeric',
-            'weight' => 'required|numeric',
             'age' => 'required|integer',
+            'weight' => 'required|numeric',
+            'height' => 'required|numeric',
             'activity_level' => 'required|string',
-        ]);     
+        ]);
+
+        $metric = new UserMetric([
+            'user_id' => $request->user()->id,
+            'age' => $validatedData['age'],
+            'weight' => $validatedData['weight'],
+            'height' => $validatedData['height'],
+            'activity_level' => $validatedData['activity_level'],
+        ]);
+
+        $metric->save();
+
+        return redirect()->route('dashboard')->with('success', 'Metrics updated successfully!');
     }
 }

@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserMetric extends Model
 {
-    use HasFactory;
+    protected $fillable = ['user_id', 'age', 'weight', 'height', 'activity_level'];
+
 }
