@@ -16,8 +16,16 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/metrics', [MetricsController::class, 'showForm'])->name('metrics.form');
-    Route::post('/metrics', [MetricsController::class, 'processForm'])->name('metrics.process');
+
+    // Route to metrics view.
+    Route::get('/metrics', function () {
+        return view('metrics.form');
+    })->name('metrics.form');
+
+    // Route for post, to store metrics from intial form 
+    Route::post('/metrics', [MetricsController::class, 'store'])->name('metrics.store');
+
+    
     });
 
 require __DIR__.'/auth.php';
