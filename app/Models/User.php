@@ -20,6 +20,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'height', 
+        'weight' , 
+        'age',  
+        'activity_level',
     ];
 
     /**
@@ -30,6 +34,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'height' => 'float', 
+        'weight' => 'float',
+        'age' => 'int',
+        'activity_level' => 'string',
     ];
 
     /**
