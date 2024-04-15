@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserMetric extends Model
 {
-    protected $fillable = ['user_id', 'age', 'weight', 'height', 'gender' ,'activity_level'];
+    protected $fillable = ['user_id', 'age', 'weight', 'height', 'gender' ,'activity_level', 'bmi', 'bmr', 'tdee'];
 
 }

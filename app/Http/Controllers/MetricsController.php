@@ -26,17 +26,20 @@ class MetricsController extends Controller
             'activity_level' => $validatedData['activity_level'],
         ]);
 
+        $metric->bmi = $this->calculateBMI($metric);
+        $metric->bmr = $this->calculateBMR($metric);
+        $metric->tdee = $this->calculateTDEE($metric->bmr, $metric->activity_level);
+
         $metric->save();
 
         return redirect()->route('dashboard')->with('success', 'Metrics updated successfully!');
     }
 
-    public function calculateMetrics(UserMetric $userMetric) {
+    public function calculateBMI(UserMetric $userMetric) {
         // https://www.cdc.gov/healthyweight/assessing/bmi/childrens_BMI/childrens_BMI_formula.html#:~:text=Formula%20and%20Calculation&text=The%20formula%20for%20BMI%20is,to%20convert%20this%20to%20meters.&text=When%20using%20English%20measurements%2C%20pounds%20should%20be%20divided%20by%20inches%20squared.
         $heightInMeters = $userMetric->height / 100;
-        $bmi = $userMetric -> weight / ($heightInMeters *  $heightInMeters);
-        $bmr = $this-> calculateBMR($userMetric);
-        $tdee = $this-> calculateTDEE($bmr, $userMetric -> activity_level);
+        return $userMetric -> weight / ($heightInMeters *  $heightInMeters);
+
 
     }
     
