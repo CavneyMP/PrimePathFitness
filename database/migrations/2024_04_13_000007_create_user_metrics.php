@@ -17,6 +17,7 @@ return new class extends Migration
             $table->float('weight');
             $table->float('height');
             $table->string('activity_level');
+            $table->string('gender');
             $table->timestamps();
         });
     }

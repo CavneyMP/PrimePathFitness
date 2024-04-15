@@ -13,6 +13,7 @@ class MetricsController extends Controller
             'age' => 'required|integer',
             'weight' => 'required|numeric',
             'height' => 'required|numeric',
+            'gender' => 'required|string',
             'activity_level' => 'required|string',
         ]);
 
@@ -21,6 +22,7 @@ class MetricsController extends Controller
             'age' => $validatedData['age'],
             'weight' => $validatedData['weight'],
             'height' => $validatedData['height'],
+            'gender' => $validatedData['gender'],
             'activity_level' => $validatedData['activity_level'],
         ]);
 
@@ -49,7 +51,6 @@ class MetricsController extends Controller
             'Lightly active' => 1.375,
             'Moderately active' => 1.55,
             'Very active' => 1.725,
-            'Super active' => 1.9
+            'Super active' => 1.9];
     }
-    
 }
