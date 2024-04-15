@@ -43,12 +43,14 @@ class MetricsController extends Controller
     private function calculateBMR(UserMetric $userMetric) {
         // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
         // Basal metabolic rate
+        // Male calculation to calculate BMR
         if ($userMetric->gender === 'Male') {
             return (10 * $userMetric->weight) // Need 10 multiplied by weight in KG, represents engergy cost of maintaining weight.
                  + (6.25 * $userMetric->height) // Then need 6.25 multiplied by height in CM,  represents metabolic cost of maintaining height.
                  - (5 * $userMetric->age) //  Then need 5 multiplied by age in years, represents adjustments in decreased metobolism with age.
                  + 5; // Gender adjustments adds 5 to account for higher muscle mass.
         } else {
+            // Female calculation to calcuate BMR
             return (10 * $userMetric->weight) // Need 10 multiplied by weight in KG, represents engergy cost of maintaining weight.
                  + (6.25 * $userMetric->height) // Then need 6.25 multiplied by height in CM,  represents metabolic cost of maintaining height.
                  - (5 * $userMetric->age) //  Then need 5 multiplied by age in years, represents adjustments in decreased metobolism with age.
@@ -58,11 +60,15 @@ class MetricsController extends Controller
     
     private function calculateTDEE($bmr, $activityLevel) {
         // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
+        // Activty factors for different levels of activity
         $activityFactors = [
             'Sedentary' => 1.2,
             'Lightly active' => 1.375,
             'Moderately active' => 1.55,
             'Very active' => 1.725,
             'Super active' => 1.9];
+
+        // Calculate TDEE by multiplying the BMR with activity factor the user supplies.
+        return $bmr * ($activityFactors[$activityLevel]);
     }
 }
