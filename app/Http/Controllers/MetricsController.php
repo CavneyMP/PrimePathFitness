@@ -69,6 +69,6 @@ class MetricsController extends Controller
             'Super active' => 1.9];
 
         // Calculate TDEE by multiplying the BMR with activity factor the user supplies.
-        return $bmr * ($activityFactors[$activityLevel]);
+        return $bmr * ($activityFactors[$activityLevel] ?? 1.2);
     }
 }
