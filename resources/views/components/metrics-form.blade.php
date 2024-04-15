@@ -34,6 +34,14 @@
       </div>
 
       <div>
+    <label for="gender" class="block text-sm font-medium text-gray-300">Gender</label>
+    <select id="gender" name="gender" autocomplete="gender" class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+     </div>
+
+      <div>
         <label for="activity_level" class="block text-sm font-medium text-gray-300">Activity Level</label>
         <select id="activity_level" name="activity_level" autocomplete="activity_level" class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
           <option>Low</option>
@@ -42,7 +50,9 @@
           <option>Very High</option>
         </select>
       </div>
+
     </div>
+    
 
     <div class="flex justify-end gap-x-6">
       <button type="reset" class="text-sm font-semibold text-gray-300 bg-gray-600 py-2 px-4 rounded-md hover:bg-gray-500">
