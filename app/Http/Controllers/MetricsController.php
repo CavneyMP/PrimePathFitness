@@ -32,7 +32,7 @@ class MetricsController extends Controller
     }
 
     public function calculateMetrics(UserMetric $userMetric) {
-        // TODO https://www.cdc.gov/healthyweight/assessing/bmi/childrens_BMI/childrens_BMI_formula.html#:~:text=Formula%20and%20Calculation&text=The%20formula%20for%20BMI%20is,to%20convert%20this%20to%20meters.&text=When%20using%20English%20measurements%2C%20pounds%20should%20be%20divided%20by%20inches%20squared.
+        // https://www.cdc.gov/healthyweight/assessing/bmi/childrens_BMI/childrens_BMI_formula.html#:~:text=Formula%20and%20Calculation&text=The%20formula%20for%20BMI%20is,to%20convert%20this%20to%20meters.&text=When%20using%20English%20measurements%2C%20pounds%20should%20be%20divided%20by%20inches%20squared.
         $heightInMeters = $userMetric->height / 100;
         $bmi = $userMetric -> weight / ($heightInMeters *  $heightInMeters);
         $bmr = $this-> calculateBMR($userMetric);
@@ -41,11 +41,20 @@ class MetricsController extends Controller
     }
     
     private function calculateBMR(UserMetric $userMetric) {
-        // TODO https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
+        // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
+        // Basal metabolic rate
+        if ($userMetric->gender === 'Male') {
+            return (10 * $userMetric->weight) // Need 10 multiplied by weight in KG, represents engergy cost of maintaining weight.
+                 + (6.25 * $userMetric->height) // Then need 6.25 multiplied by height in CM,  represents metabolic cost of maintaining height.
+                 - (5 * $userMetric->age) //  Then need 5 multiplied by age in years, represents adjustments in decreased metobolism with age.
+                 + 5; // Gender adjustments adds 5 to account for higher muscle mass.
+        } else {
+
+        }
     }
     
     private function calculateTDEE($bmr, $activityLevel) {
-        // TODO https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
+        // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
         $activityFactors = [
             'Sedentary' => 1.2,
             'Lightly active' => 1.375,
