@@ -22,10 +22,6 @@ class User extends Authenticatable
         'name', // User name
         'email', // User Email
         'password', // User passwords
-        'height',  // User height
-        'weight' , // User weight
-        'age',  // User age
-        'activity_level', // user activitiy level
     ];
 
     /**
@@ -45,10 +41,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'height' => 'float',
-        'weight' => 'float',
-        'age' => 'integer',
-        'activity_level' => 'string',
     ];
     
 
