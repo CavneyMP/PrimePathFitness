@@ -28,4 +28,17 @@ class MetricsController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Metrics updated successfully!');
     }
+
+    public function calculateMetrics(UserMetric $userMetric) {
+        // TODO
+    }
+    
+    private function calculateBMR(UserMetric $userMetric) {
+        // TODO
+    }
+    
+    private function calculateTDEE($bmr, $activityLevel) {
+        // TODO
+    }
+    
 }
