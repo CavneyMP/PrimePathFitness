@@ -30,10 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/metrics', [MetricsController::class, 'store'])->name('metrics.store');
 
     // Routes for three main pages
-    // Web Routes for new pages
     Route:: get('/workout', [WorkoutController::class, 'index'])->name('workout');
     Route:: get('/meal', [MealPlanController::class,'index'])->name('meal');
-    Route:: get('/metrics', [MetricsPageController::class, 'index'])->name ('metrics');
+    Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
     });
 
