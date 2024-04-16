@@ -16,15 +16,15 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     <!-- Workout page -->
-                    <x-nav-link :href="route('workout')" : active="request()->routeIs('workout')">
+                    <x-nav-link :href="route('workout')" :active="request()->routeIs('workout')">
                         {{ __('Workout') }}
                     </x-nav-link>
                     <!-- Meal Plan page -->
-                    <x-nav-link :href="route('meal')" : active="request()->routeIs('meal')">
+                    <x-nav-link :href="route('meal')" :active="request()->routeIs('meal')">
                         {{ __('Meal Plan') }}
                     </x-nav-link>
                     <!-- Metrics page -->
-                    <x-nav-link :href="route('metrics')" : active="request()->routeIs('metrics')">
+                    <x-nav-link :href="route('metrics')" :active="request()->routeIs('metrics')">
                         {{ __('Metrics') }}
                     </x-nav-link>
                 </div>

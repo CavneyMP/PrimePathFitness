@@ -17,4 +17,7 @@
         </div>
     </div>
     
+    <x-create-new-workout/>
+
+
 </x-app-layout>
