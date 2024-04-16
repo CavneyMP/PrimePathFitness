@@ -4,7 +4,8 @@
             <div class="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
                 <p class="text-sm font-medium leading-6 text-gray-400">BMR</p>
                 <p class="mt-2 flex items-baseline gap-x-2">
-                    <span class="text-4xl font-semibold tracking-tight text-white">{{ $metrics->bmr ?? 'N/a' }}
+                    <span
+                        class="text-4xl font-semibold tracking-tight text-white">{{ optional ($metrics)->bmr ?? 'N/a' }}
                         kcal</span>
                 </p>
             </div>
@@ -20,14 +21,16 @@
             <div class="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
                 <p class="text-sm font-medium leading-6 text-gray-400">BMI</p>
                 <p class="mt-2 flex items-baseline gap-x-2">
-                    <span class="text-4xl font-semibold tracking-tight text-white">{{ round($metrics->bmi) ?? 'N/a' }}
+                    <span
+                        class="text-4xl font-semibold tracking-tight text-white">{{ is_null($metrics) ? 'N/A' : round($metrics->bmi) ?? 'N/a' }}
                     </span>
                 </p>
             </div>
             <div class="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
                 <p class="text-sm font-medium leading-6 text-gray-400">Daily Maintaince Kcald</p>
                 <p class="mt-2 flex items-baseline gap-x-2">
-                    <span class="text-4xl font-semibold tracking-tight text-white">{{ $metrics->tdee ?? 'N/a' }}
+                    <span
+                        class="text-4xl font-semibold tracking-tight text-white">{{ optional ($metrics)->tdee ?? 'N/a' }}
                         Kcal</span>
                 </p>
             </div>
