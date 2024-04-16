@@ -17,4 +17,6 @@
         </div>
     </div>
 
+    <x-connect-whoop />
+
 </x-app-layout>

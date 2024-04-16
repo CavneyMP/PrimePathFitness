@@ -1,5 +1,5 @@
     <!-- Outer container, max width for mobile users -->
-    <div class="mx-auto max-w-5xl px-8">
+    <div class="mx-auto max-w-7xl">
 
             <div class="bg-gray-900 shadow sm:rounded-lg">
                 <div class="px-4 py-5 sm:p-6">
