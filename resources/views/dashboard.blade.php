@@ -19,7 +19,7 @@
     </div>
 
     <!-- Stats Grid -->
-    <x-stats-grid/>
+    <x-stats-grid :metrics="$metrics"/>
 
     <!-- Site Area Blocks -->
     <x-site-area-triple-block/>
