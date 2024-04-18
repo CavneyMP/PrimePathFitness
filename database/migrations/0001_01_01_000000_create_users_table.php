@@ -18,6 +18,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table -> float('bmi') -> nullable();
+            $table -> float('bmr') -> nullable();
+            $table -> float('tdee') -> nullable();
             $table->timestamps();
         });
 
