@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('exercise_type')->nullable(); // Such as strength, cardio, flexibility
             $table->string('difficulty_level')->nullable(); // Difficulty level of the exercise
             $table->timestamps(); // created_at and updated_at
+            // look to index relevant fileds. TODO.
         });
     }
 
