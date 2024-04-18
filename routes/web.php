@@ -34,6 +34,11 @@ Route::middleware('auth')->group(function () {
     Route:: get('/mealplan', [MealPlanController::class,'index'])->name('meal');
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
+    // WorkoutCreate
+    Route::get('/workout/create', [WorkoutController::class, 'create'])
+    ->middleware('auth')
+    ->name('workout.create');
+
     });
 
 require __DIR__.'/auth.php';
