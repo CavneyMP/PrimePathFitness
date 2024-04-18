@@ -17,7 +17,8 @@ return new class extends Migration
     {
         Schema::create('workout_exercises', function (Blueprint $table) {
             $table->id(); // PK
-            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // FK to `workouts`
+            $table ->String('name');
+            $table->foreignId('workout_id')->constrained()->onDelete('cascade'); // FK to `workouts`
             $table->foreignId('exercise_id')->constrained(); // FK to `exercises`
             $table->timestamps();
         });

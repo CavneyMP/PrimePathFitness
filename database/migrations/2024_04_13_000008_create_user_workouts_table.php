@@ -19,7 +19,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained(); // FK from users 
             $table->foreignId('workout_id')->constrained(); // FK from workouts
-            $table->string('status'); // Is active?
             $table->date('date'); // Date
             $table->timestamps(); // Standard stamp
         });
