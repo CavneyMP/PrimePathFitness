@@ -5,6 +5,7 @@ use App\Http\Controllers\MetricsController;
 use App\Http\Controllers\MetricsPageController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\MealPlanController;
+use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -35,9 +36,7 @@ Route::middleware('auth')->group(function () {
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
     // WorkoutCreate
-    Route::get('/workout/create', [WorkoutController::class, 'create'])
-    ->middleware('auth')
-    ->name('workout.create');
+    Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create');
 
     });
 
