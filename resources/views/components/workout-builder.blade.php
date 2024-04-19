@@ -1,7 +1,7 @@
 <!-- Outer container, max width for mobile users -->
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
     <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-        <form action="{{ route('metrics.store') }}" method="POST" class="space-y-6">
+        <form action="{{ route('workout.store') }}" method="POST" class="space-y-6">
             @csrf
 
             <!-- Form Title -->

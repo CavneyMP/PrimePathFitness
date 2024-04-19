@@ -39,6 +39,12 @@ class WorkoutCreateController extends Controller
         // We now need to attach selected exercises to workout, uses a many-to-many relationship.
         $workout->exercises() -> attach($exercises -> pluck('id')); // Using pluck to get only the ID of exercises
 
+        UserWorkout::create([
+            'user_id' => $request -> user()-> id, // ID o authenticated user.
+            'workout_id' => $workout->id, // The ID of new workout plan.
+            'date' => now(), //  Current date and time for the timestamps field.
+        ]);
+
         // Redirect to the General workout Page.
         return redirect()->route('workout.index');
     }
