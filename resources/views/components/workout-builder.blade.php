@@ -8,6 +8,20 @@
             <h2 class="text-xl font-semibold leading-7 text-white">Customize Your Workout Plan</h2>
             <p class="text-gray-300">Select your preferences to generate a tailored workout plan.</p>
 
+             <!-- name and desc Text Fields -->
+                        <div class="grid grid-cols-1 gap-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-300">Name</label>
+                    <input type="text" name="name" id="name" autocomplete="name"
+                        class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
+                </div>
+                <div>
+                    <label for="description" class="block text-sm font-medium text-gray-300">Description</label>
+                    <input type="text" name="description" id="description" value="My Custom Plan"
+                        class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
+                </div>
+
+
             <!-- Equipment selection with checkboxes, multi-select -->
             <div class="grid grid-cols-1 gap-y-6">
                 <fieldset>
