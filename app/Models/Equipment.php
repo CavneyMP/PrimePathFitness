@@ -11,4 +11,9 @@ class Equipment extends Model
 
     protected $fillable = ['name',  'description']; // Mass assingable attributes.
 
+    public function exercises() {
+        return $this -> hasMany(Exercise :: class);
+
+    }
+
 }
