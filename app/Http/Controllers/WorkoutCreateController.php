@@ -21,10 +21,17 @@ class WorkoutCreateController extends Controller
             'workout_split' => 'required|string', // Required workout split type, string from form.
         ]);
 
-        // Query the database for exercises that match the selected equipment and preferences.
+        // Query the database for exercises that match the selected equipment and preferences and stoire to variable.
         $exercises = Exercise :: whereIn('equipment_id', $request->equipment) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
          -> get(); // Retrieve filtered exercises from DB
+        
+        // Create a new workout instance to populate with data from the form request.
+        $workout = new Workout([
+            'name' => $request -> name ?? 'Custom Workout Plan', // take name from form, if not default name provided.
+            'description' => $request -> description ?? 'Based on your selected preferences', // the default description.
+            'type' => $request -> workout_split, // Split chosen by the user on form.
+            ]);
 
         // New workout model with the data from the request to save.
         Workout :: create($request->all());
