@@ -19,6 +19,10 @@ class WorkoutCreateController extends Controller
             'description' => 'required|string', // as above
             'type' => 'required|string', // as above
         ]);
+
+        // New workout model with the data from the request to save.
+        Workout :: create($request->all());
+
     }
 
 }
