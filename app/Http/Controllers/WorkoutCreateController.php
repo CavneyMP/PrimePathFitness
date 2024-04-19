@@ -50,7 +50,7 @@ class WorkoutCreateController extends Controller
         ]);
 
         // Redirect to the General workout Page.
-        return redirect()->route('workout.index') -> with('success', 'Workout created successfully');;
+        return redirect()->route('workout') -> with('success', 'Workout created successfully');;
     }
 
 }
