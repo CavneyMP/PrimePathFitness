@@ -52,4 +52,10 @@ class User extends Authenticatable
         // update metrics with data
         return $this->update($validatedData);
     }
+
+    public function workouts() {
+        return $this -> hasManyThrough(
+
+        );
+    }
 }
