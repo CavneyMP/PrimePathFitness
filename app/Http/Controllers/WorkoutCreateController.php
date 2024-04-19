@@ -15,9 +15,10 @@ class WorkoutCreateController extends Controller
     public function store(Request $request) {
 
         $request -> validate([ // Validate request data before doing anything 
-            'name' => 'required|string', // Make sure input is string.
-            'description' => 'required|string', // as above
-            'type' => 'required|string', // as above
+            'equipment' => 'array|required', // Ensure equipment provided an array.
+            'preference' => 'array|required', // Ensure exercise preferences provided an dan array.
+            'cardio' => 'array', // Optional cardio equipment choices
+            'workout_split' => 'required|string', // Required workout split type, string from form.
         ]);
 
         // New workout model with the data from the request to save.

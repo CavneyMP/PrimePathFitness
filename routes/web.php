@@ -36,7 +36,8 @@ Route::middleware('auth')->group(function () {
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
     // WorkoutCreate
-    Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create');
+    Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create'); // Route to view.
+    Route::post('/workout-create', [WorkoutCreateController::class, 'store'])->name('workout-create.store'); // Route to store
 
     });
 
