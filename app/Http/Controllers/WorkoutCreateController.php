@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Workout;
+
 
 class WorkoutCreateController extends Controller
 {
@@ -46,7 +48,7 @@ class WorkoutCreateController extends Controller
         ]);
 
         // Redirect to the General workout Page.
-        return redirect()->route('workout.index');
+        return redirect()->route('workout.index') -> with('success', 'Workout created successfully');;
     }
 
 }
