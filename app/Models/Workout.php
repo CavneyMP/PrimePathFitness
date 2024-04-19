@@ -9,6 +9,6 @@ class Workout extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description'];
-    
+    protected $fillable = ['name', 'description', 'type']; // Mass assignable attributes.
+
 }
