@@ -8,14 +8,17 @@ class WorkoutCreateController extends Controller
 {
     public function index()
     {
-        $workouts = Workout :: all(); // Will look to fetch all workouts from the DB
         // return workout blade view
         return view('pages.workout-create');
     }
 
     public function store(Request $request) {
 
+        $request -> validate([ // Validate request data before doing anything 
+            'name' => 'required|string', // Make sure input is string.
+            'description' => 'required|string', // as above
+            'type' => 'required|string', // as above
+        ]);
     }
-    
 
 }
