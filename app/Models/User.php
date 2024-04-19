@@ -54,7 +54,13 @@ class User extends Authenticatable
     }
 
     public function workouts() {
-        return $this -> hasManyThrough(
+        return $this -> hasManyThrough( // Laravel function for SQL to retreive data.
+                Workout :: class, // Final data model 
+                UserWorkout :: class, // Middle table that links users to workouts
+                'user_id', // Foreign key UserWorkout table
+                 'id', // Foreign key Workout table
+                'id', // Local Users table
+                'workout_id' // Local UserWorkout table
 
         );
     }

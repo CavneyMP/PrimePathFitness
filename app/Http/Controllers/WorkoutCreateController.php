@@ -8,6 +8,7 @@ class WorkoutCreateController extends Controller
 {
     public function index()
     {
+        $workouts = Workout::all(); // Will look to fetch all workouts from the DB
         // return workout blade view
         return view('pages.workout-create');
     }
