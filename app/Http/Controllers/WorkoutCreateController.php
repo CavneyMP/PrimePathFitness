@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Workout;
+use App\Models\Exercise; 
+use App\Models\UserWorkout; 
 
 
 class WorkoutCreateController extends Controller
