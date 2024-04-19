@@ -19,5 +19,7 @@ class EquipmentSeeder extends Seeder
             ['name' => 'Pull-Up Bar', 'description' => 'Horizontal bar fixed above head height, used for pull-ups.'],
             ['name' => 'Cable Machine', 'description' => 'A machine used in weight training that uses a cable to lift weights.'],
         ];
+        foreach ($equipmentData as $eq) {
+            Equipment :: create($eq); 
     }
 }
