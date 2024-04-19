@@ -11,4 +11,8 @@ class Exercise extends Model
 
     protected $fillable = ['name', 'description', 'muscle_group', 'exercise_type', 'difficulty_level', 'equipment_id']; // Fields mass assignable
 
+    public function equipment() {
+        return $this -> belongsTo(Equipment :: class, 'equipment_id');
+
+}
 }
