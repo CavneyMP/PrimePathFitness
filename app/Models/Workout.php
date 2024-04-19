@@ -10,5 +10,9 @@ class Workout extends Model
     use HasFactory;
 
     protected $fillable = ['name', 'description', 'type']; // Mass assignable attributes.
-
+    
+    public function exercises() {
+        return $this -> belongsToMany(Exercise :: class, 'workout_exercises' , 'workout_id', 'exercise_id');
+        
+    }
 }
