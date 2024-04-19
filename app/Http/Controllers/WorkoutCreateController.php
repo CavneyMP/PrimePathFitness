@@ -33,12 +33,14 @@ class WorkoutCreateController extends Controller
             'type' => $request -> workout_split, // Split chosen by the user on form.
             ]);
 
-        // New workout model with the data from the request to save.
-        Workout :: create($request->all());
+        
+        $workout->save(); // Save new workout to the database table
+
+        // We now need to attach selected exercises to workout, uses a many-to-many relationship.
+        $workout->exercises() -> attach($exercises -> pluck('id')); // Using pluck to get only the ID of exercises
 
         // Redirect to the General workout Page.
         return redirect()->route('workout.index');
-
     }
 
 }
