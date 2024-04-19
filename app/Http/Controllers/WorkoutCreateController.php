@@ -23,6 +23,9 @@ class WorkoutCreateController extends Controller
         // New workout model with the data from the request to save.
         Workout :: create($request->all());
 
+        // Redirect to the General workout Page.
+        return redirect()->route('workout.index');
+
     }
 
 }
