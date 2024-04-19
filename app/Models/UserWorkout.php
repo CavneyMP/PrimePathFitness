@@ -11,4 +11,9 @@ class UserWorkout extends Model
 
     protected $fillable = [ 'user_id', 'workout_id', 'date']; // Mass assinable fields for form.
 
+    public function workout() {
+        return $this -> belongsTo(Workout :: class);
+
+    }
+
 }
