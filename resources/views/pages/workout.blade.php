@@ -19,7 +19,7 @@
     
     <x-create-new-workout/>
 
-    <x-active-workout-show/>
+    <x-active-workout-show :workout="$workout"/>
 
 
 </x-app-layout>
