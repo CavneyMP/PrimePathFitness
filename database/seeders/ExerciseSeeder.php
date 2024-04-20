@@ -1,45 +1,49 @@
 <?php
+
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Exercise;
 use App\Models\Equipment;
 
 class ExerciseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         // Ensure that EquipmentSeeder is run first
         $this->call(EquipmentSeeder::class);
 
-        // Sample exercises data
-        $exercisesData = [
-            [
-                'name' => 'Bench Press',
-                'description' => 'A compound exercise that targets the chest, shoulders, and triceps.',
-                'muscle_group' => 'Chest',
-                'equipment_id' => Equipment::where('name', 'Bench')->first()->id,
-                'exercise_type' => 'Compound',
-                'difficulty_level' => 'Intermediate'
-            ],
-            [
-                'name' => 'Pull-Ups',
-                'description' => 'Exercise performed by lifting yourself up on a pull-up bar, targeting the upper body.',
-                'muscle_group' => 'Upper Body',
-                'equipment_id' => Equipment::where('name', 'Pull-Up Bar')->first()->id,
-                'exercise_type' => 'Bodyweight',
-                'difficulty_level' => 'Advanced'
-            ],
-            // Add more exercises as needed...
+        // Retrieve equipment ids
+        $equipmentIds = Equipment::pluck('id', 'name')->toArray();
+
+        // Sample exercises data - for demonstration, assuming certain structure
+        $exerciseTypes = [
+            'Compound Exercises' => ['Squat', 'Deadlift', 'Bench Press'],
+            'Calisthenics' => ['Push-Up', 'Pull-Up', 'Dips'],
+            'Cable-Only Exercises' => ['Cable Fly', 'Tricep Pushdown', 'Cable Crunches'],
+            'Dumbbell-Only Exercises' => ['Dumbbell Curl', 'Dumbbell Press', 'Dumbbell Row'],
+            'Bodyweight Exercises' => ['Plank', 'Burpees', 'Air Squats']
         ];
 
-        // Loop through each exercise and add it to the database
-        foreach ($exercisesData as $exercise) {
-            Exercise::create($exercise); 
+        $muscleGroups = ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders', 'Core'];
+        $difficultyLevels = ['Beginner', 'Intermediate', 'Advanced'];
+
+        // Create a mix of exercises for each equipment type
+        foreach ($equipmentIds as $equipmentName => $equipmentId) {
+            foreach ($exerciseTypes as $type => $examples) {
+                foreach ($examples as $example) {
+                    for ($i = 0; $i < 4; $i++) { // Generate multiple variants
+                        Exercise::create([
+                            'name' => "{$example} {$i}",
+                            'description' => "A {$type} targeting multiple muscles.",
+                            'muscle_group' => $muscleGroups[array_rand($muscleGroups)],
+                            'exercise_type' => $type,
+                            'difficulty_level' => $difficultyLevels[array_rand($difficultyLevels)],
+                            'equipment_id' => $equipmentId
+                        ]);
+                    }
+                }
+            }
         }
     }
 }
