@@ -14,8 +14,12 @@ class WorkoutController extends Controller
                             ->where('status', 'active')
                              ->latest()
                               ->first();
-                              
+
+        // Pass the included related exercises when fetching
+        if ($activeWorkout) {
+            $workout = Workout :: with('exercises') -> find($activeWorkout->workout_id);}
+
         // return workout blade view
-        return view('pages.workout');
+        return view('pages.workout', ['workout' => $workout]);
     }
 }
