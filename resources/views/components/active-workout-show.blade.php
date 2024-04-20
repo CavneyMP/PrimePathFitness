@@ -1,4 +1,15 @@
-<ul role="list" class="divide-y divide-gray-800">
+<!-- Outer container, max width for mobile users -->
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 px-4 pt-4">
+
+
+
+    <!-- Outer container, max width for mobile users -->
+    <div class="mx-auto max-w-3xl">
+        <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-semibold leading-7 text-white">Customize Your Workout Plan</h2>
+            <p class="text-gray-300">Select your preferences to generate a tailored workout plan.</p>
+
+        <ul role="list" class="divide-y divide-gray-800">
   <li class="flex justify-between gap-x-6 py-5">
     <div class="flex min-w-0 gap-x-4">
       <img class="h-12 w-12 flex-none rounded-full bg-gray-800" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="">
@@ -88,3 +99,11 @@
     </div>
   </li>
 </ul>
+<!-- Outer container, max width for mobile users -->
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 px-4 pt-4">
+
+
+    </div> <!-- end inner container -->
+
+
+</div> <!-- end outer container -->
