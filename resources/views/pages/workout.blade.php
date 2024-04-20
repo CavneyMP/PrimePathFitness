@@ -19,5 +19,7 @@
     
     <x-create-new-workout/>
 
+    <x-active-workout-show/>
+
 
 </x-app-layout>
