@@ -57,6 +57,23 @@
                         </select>
                     </div>
 
+                    <!-- Dropdown for selecting the type of weight loss -->
+                    <div class="grid grid-cols-1 gap-y-6">
+                        <div>
+                            <label for="goal_weight" class="block text-sm font-medium text-gray-300">Weight Loss
+                                Type</label>
+                            <select id="goal_weight" name="goal_weight" autocomplete="goal_weight"
+                                class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
+                                <option value="intensive_loss">Intensive Weight Loss</option>
+                                <option value="moderate_loss">Moderate Weight Loss</option>
+                                <option value="maintain">Maintain</option>
+                                <option value="moderate_gain">Moderate Muscle Gain</option>
+                                <option value="extreme_gain">Extreme Muscle Gain</option>
+                            </select>
+                        </div>
+                    </div>
+
+
                 </div>
 
 

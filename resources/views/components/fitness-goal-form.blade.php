@@ -4,7 +4,7 @@
     <div class="mx-auto max-w-3xl">
         <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
             <!-- Form for submitting fitness goal -->
-            <form action="{{ route('fitness.store') }}" method="POST" class="space-y-6">
+            <form action="{{ route('metrics.store') }}" method="POST" class="space-y-6">
                 @csrf
                 <!-- Form title -->
                 <h2 class="text-xl font-semibold leading-7 text-white">Fitness Goal</h2>
@@ -17,10 +17,11 @@
                         <label for="weight_loss_type" class="block text-sm font-medium text-gray-300">Weight Loss Type</label>
                         <select id="weight_loss_type" name="weight_loss_type" autocomplete="weight_loss_type"
                                 class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
-                            <option value="mild">Mild Weight Loss</option>
+                            <option value="mild">Intensive Weight Loss</option>
                             <option value="moderate">Moderate Weight Loss</option>
-                            <option value="intensive">Intensive Weight Loss</option>
-                            <option value="extreme">Extreme Weight Loss</option>
+                            <option value="moderate">Maintain</option>
+                            <option value="intensive">Moderate Muscle gain</option>
+                            <option value="extreme">Extreme Muscle gain</option>
                         </select>
                     </div>
                 </div>

@@ -32,6 +32,7 @@ class MetricsController extends Controller
             'height' => 'required|numeric',
             'gender' => 'required|string',
             'activity_level' => 'required|string',
+            'goal_weight' => 'required|string',
         ]);
 
         // Creates a saves the metric data to a new UserMetric model object.
@@ -44,6 +45,8 @@ class MetricsController extends Controller
             'height' => $validatedData['height'],
             'gender' => $validatedData['gender'],
             'activity_level' => $validatedData['activity_level'],
+            'goal_weight' => $validatedData['goal_weight'], 
+
         ]);
 
         //  Pass BMI data to $metric model using the calculateBMI method, and passing it the current metrics model object.
@@ -55,6 +58,7 @@ class MetricsController extends Controller
 
         // Save the new metric object (To Database table using save method from Eloquent ORM package in laravel)
         $metric->save();
+        \Log::info('Form Data:', $request->all());
 
         // Return redirect method, with route method and dashboard blade template, and uses with method to provided successes message to user.
         return redirect()->route('dashboard')->with('success', 'Metrics updated successfully!');
