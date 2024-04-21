@@ -58,7 +58,7 @@ class MetricsController extends Controller
 
         // Save the new metric object (To Database table using save method from Eloquent ORM package in laravel)
         $metric->save();
-        \Log::info('Form Data:', $request->all());
+        \Log::info('Form Data:', $request->all()); //Log the data for dev purposes.
 
         // Return redirect method, with route method and dashboard blade template, and uses with method to provided successes message to user.
         return redirect()->route('dashboard')->with('success', 'Metrics updated successfully!');

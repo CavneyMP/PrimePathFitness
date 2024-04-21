@@ -17,11 +17,10 @@ return new class extends Migration
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id(); // PK
             $table->string('name'); // Name of ingredient
-            $table->float('calories_per_unit'); // Kcal per unit
-            $table->float('protein_per_uni'); // 
-            $table->float('carbs_per_unit');
-            $table->float('fats_per_unit');
-            $table->string('unit'); // Mesurements
+            $table->float('calories_per_gram'); // Calories per gram
+            $table->float('protein_per_gram'); // Protein per gram
+            $table->float('carbs_per_gram'); // Carbohydrates per gram
+            $table->float('fats_per_gram'); // Fats per gram
 
             // Dietary attributes
             $table->boolean('is_complex_carb')  ->default(false); // Is the ingredient classified as a complex carbohydrate? 

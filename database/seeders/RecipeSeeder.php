@@ -53,7 +53,6 @@ class RecipeSeeder extends Seeder
             ['name' => 'Beef Tacos', 'description' => 'Tacos filled with ground beef, cheese, and salsa.', 'mealtype' => 'dinner'],
             ['name' => 'Pork Chops', 'description' => 'Pork chops with apple sauce and steamed veggies.', 'mealtype' => 'dinner'],
             ['name' => 'Mushroom Risotto', 'description' => 'Creamy risotto with Porcini mushrooms.', 'mealtype' => 'dinner'],
-            ['name' => 'Shrimp Scampi', 'description' => 'Shrimp sautéed in garlic butter and white wine.', 'mealtype' => 'dinner'],
         ];
 
         foreach ($recipesData as $recipe) {
