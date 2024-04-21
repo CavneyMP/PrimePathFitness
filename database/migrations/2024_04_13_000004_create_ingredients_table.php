@@ -21,7 +21,15 @@ return new class extends Migration
             $table->float('protein_per_uni'); // 
             $table->float('carbs_per_unit');
             $table->float('fats_per_unit');
-            $table->string('unit'); // Mesurements 
+            $table->string('unit'); // Mesurements
+
+            // Dietary attributes
+            $table->boolean('is_complex_carb')  ->default(false); // Is the ingredient classified as a complex carbohydrate? 
+            $table->boolean('is_simple_carb')   ->default(false); // Is the ingredient classified as a simple carb?
+            $table->boolean('is_lactose')       ->default(false); // Is the ingredient classified as lactose ingredient?
+            $table->boolean('is_vegetarian')    ->default(true); // Is the ingredient classified as vegetarian?
+            $table->boolean('is_vegan')         ->default(true); // Is the ingredient classified as vegan?
+
             $table->timestamps();
         });
     }

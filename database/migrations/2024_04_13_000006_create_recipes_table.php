@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->integer('serving_size');
+            $table->text('mealtype');
             $table->timestamps();
         });
     }

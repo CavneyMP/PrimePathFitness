@@ -6,7 +6,6 @@ use App\Http\Controllers\MetricsPageController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\MealPlanController;
 use App\Http\Controllers\MealPlanCreateController;
-
 use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
