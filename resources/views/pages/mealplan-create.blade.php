@@ -17,6 +17,6 @@
         </div>
     </div>
     
-    <x-workout-builder />
+    <x-mealplan-builder />
 
 </x-app-layout>

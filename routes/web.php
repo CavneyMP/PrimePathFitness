@@ -5,6 +5,8 @@ use App\Http\Controllers\MetricsController;
 use App\Http\Controllers\MetricsPageController;
 use App\Http\Controllers\WorkoutController;
 use App\Http\Controllers\MealPlanController;
+use App\Http\Controllers\MealPlanCreateController;
+
 use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -40,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/workout-create', [WorkoutCreateController::class, 'store'])->name('workout-create.store'); // Route to store
 
     // MealPlanCreate
-    Route::get('/mealplan-create', [WorkoutCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
+    Route::get('/mealplan-create', [MealPlanCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
     });
 
 require __DIR__.'/auth.php';
