@@ -14,10 +14,18 @@
                 <ul role="list" class="divide-y divide-white/5">
                     @foreach(App\Models\Recipe::where('mealtype', $mealType)->get() as $recipe)
                         <li class="py-4">
-                            <div class="flex items-center gap-x-3">
-                                <h3 class="flex-auto truncate text-sm font-semibold leading-6 text-white">{{ $recipe->name }}</h3>
-                            </div>
+                            <div class="flex items-center justify-between">
+                        <!-- Recipe name and description -->
+                        <div class="flex-auto">
+                            <h3 class="text-sm font-semibold leading-6 text-white">{{ $recipe->name }}</h3>
                             <p class="mt-3 truncate text-sm text-gray-500">{{ $recipe->description }}</p>
+                        </div>
+                        <!-- Check box for each recipe -->
+                        <div class="flex-none">
+                            <input type="checkbox" name="recipes[]" value="{{ $recipe->id }}"
+                                class="rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                        </div>
+                    </div>
                         </li>
                     @endforeach
                 </ul>
