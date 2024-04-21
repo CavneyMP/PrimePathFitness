@@ -39,6 +39,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create'); // Route to view.
     Route::post('/workout-create', [WorkoutCreateController::class, 'store'])->name('workout-create.store'); // Route to store
 
+    // MealPlanCreate
+    Route::get('/mealplan-create', [WorkoutCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
     });
 
 require __DIR__.'/auth.php';
