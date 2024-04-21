@@ -9,14 +9,30 @@ use App\Models\UserWorkout;
 use App\Models\Equipment;
 use Illuminate\Support\Facades\Log;
 
+/**
+ * WorkoutCreateController  is responsible for handling the creation of new workouts based on user inputs and preferences.
+ */
+
 class WorkoutCreateController extends Controller
 {
+
+     /**
+     * Show the workout creation view.
+     *
+     * @return \Illuminate\View\View Returns the workout creation view.
+     */
     public function index()
     {
         // return workout blade view
         return view('pages.workout-create');
     }
 
+    /**
+     * Store a new workout in the database based on the provided request data
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse Redirects to the workout page with a success message after creating the workout.
+     */
     public function store(Request $request) {
 
         $request -> validate([ // Validate request data before doing anything 

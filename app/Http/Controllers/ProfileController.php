@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
+/**
+ * ProfileController manages operations related to a user's profile, such as editing, updating, and deleting the profile.
+ */
+
 class ProfileController extends Controller
 {
     /**

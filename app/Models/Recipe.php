@@ -1,4 +1,3 @@
-php artisan make:model RecipeIngredient
 <?php
 
 namespace App\Models;

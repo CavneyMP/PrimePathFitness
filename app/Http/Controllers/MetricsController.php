@@ -16,10 +16,9 @@ class MetricsController extends Controller
     /**
      *  Store the newly create user metrics, takes parameter $request, a provided method for accesing various HTTPS requests from the illuminate pack.
      * Used here to with the validate illumate pack method, to check data pased from form is of correct data type, int, string etc...
-     * Returns HTTP illuminate redirect route method with the class dashboard view passed. Uses with method to provide user message to metrics stored.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse Returns HTTP illuminate redirect route method with the class dashboard view passed. Uses with method to provide user message to metrics stored.
      */
     public function store(Request $request)
     {
@@ -65,10 +64,9 @@ class MetricsController extends Controller
      * Calculates the Body Mass Index (BMI) for a given UserMetric object.
      * Take the user metric model object created to utilise the metrics within the object for this calculation, and where to return the new float entry too.
      * Creates a new variable called hight in meters, which uses the height from the model and divides by 100, as stored in cm.
-     * Returns the value of user metric weight data, and the height x height as per BMI formula.
      *
      * @param  UserMetric $userMetric
-     * @return float
+     * @return float      Returns the value of user metric weight data, and the height x height as per BMI formula.
      */
 
     public function calculateBMI(UserMetric $userMetric) {
@@ -88,7 +86,7 @@ class MetricsController extends Controller
      * The final result will be the users new BMR data, which is returned after the calling. 
      *
      * @param  UserMetric $userMetric
-     * @return float
+     * @return float Returns the final result of the users BMR
      */
     
     private function calculateBMR(UserMetric $userMetric) {
