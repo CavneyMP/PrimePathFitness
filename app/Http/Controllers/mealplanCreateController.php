@@ -71,6 +71,11 @@ class MealPlanCreateController extends Controller
                    'active' => true
                 ]);
 
+        // Adjustments and to save each of the recipes based on the calculated adjustment factor figure.
+        foreach ($recipes as $recipe) {
+            $this -> adjustAndSaveRecipe($recipe,  $adjustmentFactor, $mealPlan->id); 
+        }
+
  
         // Redirect to the General workout Page, with success message
         return redirect()->route('mealplan')->with('success', 'Workout created successfully');
