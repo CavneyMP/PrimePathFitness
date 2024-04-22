@@ -38,6 +38,18 @@ class MealPlanCreateController extends Controller
             'days' => 'required|integer|min:1'
         ]);
 
+        // Logic to Fetch the most recent user metrics from the database.
+        // Queries the UserMetric Table, and finds User ID matches
+        // Filtering condtions: Latest, gets the order of created at, so its the first entry of user metrics
+        // FirstOrFail will throw the exception if user metrics not found.
+        $userMetric = UserMetric :: where('user_id', $request -> user() -> id) -> latest() -> firstOrFail();
+
+         // Retrieves the recipes selected by the user based on their recipe IDs.
+         $recipes = Recipe :: whereIn('id', $validated['recipes']) -> get(); 
+
+
+
+
         // Redirect to the General workout Page, with success message
         return redirect()->route('mealplan') -> with('success', 'Workout created successfully');;
     }
