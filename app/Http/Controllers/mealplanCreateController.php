@@ -7,6 +7,11 @@ use App\Models\Workout;
 use App\Models\Exercise; 
 use App\Models\UserWorkout; 
 use App\Models\Equipment;
+use App\Models\Ingredient; 
+use App\Models\Recipe;
+use App\Models\UserMetric; 
+use App\Models\MealPlanRecipe; 
+use App\Models\UserMealPlan;
 use Illuminate\Support\Facades\Log;
 
 // MealPlanCreateController class for handling the meal plan creation.
@@ -38,12 +43,8 @@ class MealPlanCreateController extends Controller
      */
     public function store(Request $request) {
 
-        // Validate the data collected from the form.
-        $request -> validate([
+        $validated = $request -> validate([
             'recipes' => 'required|array',
-            'days' => 'required|integer|min:1',
-            'goal_weight' => 'required|in:intensive_loss,moderate_loss,maintain,moderate_gain,extreme_gain'
-            
         ]);
 
         // Logic to Fetch the most recent user metrics from the database.
@@ -54,26 +55,23 @@ class MealPlanCreateController extends Controller
 
          // Retrieves the recipes selected by the user based on their recipe IDs from the user form
          $recipes = Recipe :: whereIn('id', $validated['recipes']) -> get(); 
-        
-
         // Varaible to hold total calories of all recipes.
         // Laravel reduce method to iterate over each recipe.
         // For each recipe we call calculateRecipeCalories, passing the recipe itself.
         $totalCalories = $recipes -> reduce(function ($carry, $recipe) {
-            return $carry + $this -> calculateRecipeCalories($recipe);
+            $calories = $this -> calculateRecipeCalories($recipe);
+            return  $carry + $calories;
         }, 0);
 
         // Variable to hold the goal calories.
-        $goalCalories = $this->calculateGoalCalories($userMetric, $validated ['goal_weight'] );
+        $goalCalories = $this->calculateGoalCalories($userMetric);
 
         // varable to hold the adjustment factor, that will be used to adjust the recipes.
-        $adjustmentFactor = $goalCalories / $totalCalories;
+        $adjustmentFactor = $goalCalories / max($totalCalories, 1);  // Divsion by 0 event handler
 
-        // Creates a new meal plan in the userMealPlan table.
         $mealPlan = UserMealPlan :: create([
                 'user_id' => $request -> user()->id,
                  'start_date' => now(),
-                  'end_date' => now() -> addDays($validated['days']), 
                    'active' => true
                 ]);
 
@@ -81,10 +79,8 @@ class MealPlanCreateController extends Controller
         foreach ($recipes as $recipe) {
             $this -> adjustAndSaveRecipe($recipe,  $adjustmentFactor, $mealPlan->id); 
         }
-
- 
         // Redirect to the General workout Page, with success message
-        return redirect()->route('mealplan')->with('success', 'Workout created successfully');
+        return redirect()->route('meal')->with('success', 'Workout created successfully');
     }
 
 
