@@ -55,10 +55,27 @@ class MealPlanCreateController extends Controller
             return $carry + $this -> calculateRecipeCalories($recipe);
         }, 0);
 
-
-
+        // Variable to hold the goal calories.
+        $goalCalories = $this->calculateGoalCalories($userMetric);
 
         // Redirect to the General workout Page, with success message
-        return redirect()->route('mealplan') -> with('success', 'Workout created successfully');;
+        return redirect()->route('mealplan')->with('success', 'Workout created successfully');
     }
+        // Function to calculate goal calories
+        protected function calculateGoalCalories(UserMetric $userMetric)
+        {
+
+        // Mapping new varaible to advised fitness goal.
+        $goalWeightAdjustments = [
+        'intensive_loss' => -500,
+        'moderate_loss' => -250,
+        'maintain' => 0,
+        'moderate_gain' => 250,
+        'extreme_gain' => 500
+        ];
+
+        // Fetches the caloric adjusmtnet based on the user goal provided
+        $adjustment = $goalWeightAdjustments[$userMetric -> goal_weight] ?? 0;
+        // Return the TDDE + Adjustment value
+        return $userMetric->tdee + $adjustment;    }
 }
