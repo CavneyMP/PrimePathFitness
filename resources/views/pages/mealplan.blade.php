@@ -19,4 +19,7 @@
 
     <x-create-new-mealplan/>
 
+    <x-active-mealplan-show/>
+
+
 </x-app-layout>
