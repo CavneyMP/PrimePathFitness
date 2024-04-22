@@ -11,4 +11,14 @@ class MealPlanRecipe extends Model
 
     protected $fillable = ['meal_plan_id' , 'recipe_id' , 'adjusted_quantity'];
 
+    public function mealPlan()
+    {
+        return $this -> belongsTo(UserMealPlan :: class);
+    }
+
+    public function recipe()
+    {
+        return $this -> belongsTo(Recipe :: class);
+    }
+
 }
