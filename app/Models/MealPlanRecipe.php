@@ -9,16 +9,21 @@ class MealPlanRecipe extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['meal_plan_id' , 'recipe_id' , 'adjusted_quantity'];
+    protected $fillable = ['meal_plan_id', 'recipe_id', 'ingredient_id', 'adjusted_quantity'];
 
     public function mealPlan()
     {
-        return $this -> belongsTo(UserMealPlan :: class);
+        return $this->belongsTo(UserMealPlan::class, 'meal_plan_id');
     }
 
     public function recipe()
     {
-        return $this -> belongsTo(Recipe :: class);
+        return $this->belongsTo(Recipe::class);
     }
 
+    public function ingredient()
+    {
+        return $this->belongsTo(Ingredient::class);
+    }
 }
+

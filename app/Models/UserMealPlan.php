@@ -18,6 +18,6 @@ class UserMealPlan extends Model
 
     public function recipes()
     { 
-        return $this -> hasMany(MealPlanRecipe :: class);
+        return $this -> hasMany(MealPlanRecipe :: class,  'meal_plan_id');
     }
 }

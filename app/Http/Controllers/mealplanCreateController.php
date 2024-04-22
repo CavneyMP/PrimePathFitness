@@ -139,15 +139,13 @@ class MealPlanCreateController extends Controller
     protected function adjustAndSaveRecipe(Recipe $recipe, $adjustmentFactor, $mealPlanId) 
     {
         foreach ($recipe->ingredients as $ingredient) {
-            $adjustedQuantity = $ingredient -> pivot -> quantity * $adjustmentFactor;
-            MealPlanRecipe :: create([
+            $adjustedQuantity = $ingredient->pivot->quantity * $adjustmentFactor;
+            MealPlanRecipe::create([
                 'meal_plan_id' => $mealPlanId,
-                 'recipe_id' => $recipe->id,
-                  'adjusted_quantity' => $adjustedQuantity
-
+                'recipe_id' => $recipe->id,
+                'ingredient_id' => $ingredient->id,  // Include ingredient ID
+                'adjusted_quantity' => $adjustedQuantity
             ]);
-
         }
     }
-
 }
