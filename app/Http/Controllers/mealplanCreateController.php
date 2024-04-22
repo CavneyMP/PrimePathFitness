@@ -34,6 +34,8 @@ class MealPlanCreateController extends Controller
 
         // Validate the data collected from the form.
         $request -> validate([
+            'recipes' => 'required|array',
+            'days' => 'required|integer|min:1'
         ]);
 
         // Redirect to the General workout Page, with success message
