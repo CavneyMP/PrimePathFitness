@@ -4,7 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Recipe;
-use App\Models\RecipeIngredient; // Assuming this model exists to handle the relationship
+use App\Models\RecipeIngredient;
+use App\Models\Ingredient;
+
 use Illuminate\Support\Facades\DB;
 
 class RecipeIngredientSeeder extends Seeder
@@ -35,7 +37,6 @@ class RecipeIngredientSeeder extends Seeder
             // Add all other recipes similarly
             'Beef Tacos' => [
                 ['name' => 'Ground beef', 'quantity' => 100], // grams
-                ['name' => 'Taco seasoning', 'quantity' => 30], // grams
                 ['name' => 'Tortillas', 'quantity' => 100], // grams
                 ['name' => 'Cheese', 'quantity' => 30], // grams
                 ['name' => 'Salsa', 'quantity' => 50], // grams
@@ -72,7 +73,7 @@ class RecipeIngredientSeeder extends Seeder
                 ['name' => 'Strawberries', 'quantity' => 50], // grams
                 ['name' => 'Blueberries', 'quantity' => 50], // grams
                 ['name' => 'Raspberries', 'quantity' => 50], // grams
-            ],
+            ], //10
             'Protein Smoothie' => [
                 ['name' => 'Bananas', 'quantity' => 100], // grams
                 ['name' => 'Peanut butter', 'quantity' => 30], // grams
@@ -105,7 +106,7 @@ class RecipeIngredientSeeder extends Seeder
                 ['name' => 'Feta cheese', 'quantity' => 50], // grams
             ],
             'Turkey Sandwich' => [
-                ['name' => 'Whole grain bread', 'quantity' => 100], // grams
+                ['name' => 'Whole Grain Bread', 'quantity' => 100], // grams
                 ['name' => 'Turkey breast', 'quantity' => 100], // grams
                 ['name' => 'Lettuce', 'quantity' => 30], // grams
             ],
@@ -117,7 +118,7 @@ class RecipeIngredientSeeder extends Seeder
             'Sushi Rolls' => [
                 ['name' => 'Nori seaweed sheets', 'quantity' => 10], // grams
                 ['name' => 'Salmon', 'quantity' => 100], // grams
-                ['name' => 'Rice', 'quantity' => 100], // grams
+                ['name' => 'Arborio Rice', 'quantity' => 100], // grams
             ],
             'Beef Stir Fry' => [
                 ['name' => 'Ground beef', 'quantity' => 200], // grams
@@ -126,23 +127,25 @@ class RecipeIngredientSeeder extends Seeder
             ],
             'Pasta Salad' => [
                 ['name' => 'Pasta', 'quantity' => 200], // grams (assuming plain pasta is an ingredient)
-                ['name' => 'Cherry tomatoes', 'quantity' => 100], // grams
+                ['name' => 'Tomatoes', 'quantity' => 100], // grams
                 ['name' => 'Pesto sauce', 'quantity' => 50], // grams (assuming pesto sauce is an ingredient)
             ],
             'Vegan Burger' => [
-                ['name' => 'Burger bun', 'quantity' => 100], // grams (assuming burger buns are an ingredient)
-                ['name' => 'Vegan patty', 'quantity' => 100], // grams (assuming vegan patties are an ingredient)
+                ['name' => 'Burger Bun', 'quantity' => 100], // grams (assuming burger buns are an ingredient)
+                ['name' => 'Vegan Patty', 'quantity' => 100], // grams (assuming vegan patties are an ingredient)
                 ['name' => 'Lettuce', 'quantity' => 30], // grams
-                ['name' => 'Tomato', 'quantity' => 50], // grams
-                ['name' => 'Vegan mayo', 'quantity' => 30], // grams (assuming vegan mayo is an ingredient)
+                ['name' => 'Tomatoes', 'quantity' => 50], // grams
+                ['name' => 'Vegan Mayo', 'quantity' => 30], // grams (assuming vegan mayo is an ingredient)
             ],
             'Vegan Stir Fry' => [
                 ['name' => 'Tofu', 'quantity' => 200], // grams
-                ['name' => 'Mixed vegetables', 'quantity' => 300], // grams (assuming a mix of bell peppers, broccoli, etc.)
+                ['name' => 'Bell peppers', 'quantity' => 200], // grams (assuming bell peppers)
+                ['name' => 'Broccoli', 'quantity' => 100], // grams (assuming broccoli)
                 ['name' => 'Soy sauce', 'quantity' => 40], // milliliters
+            
             ],
             'Vegetarian Chili' => [
-                ['name' => 'Beans', 'quantity' => 200], // grams (assuming canned or pre-cooked beans are an ingredient)
+                ['name' => 'Black Beans', 'quantity' => 200], // grams (assuming canned or pre-cooked beans are an ingredient)
                 ['name' => 'Tomatoes', 'quantity' => 200], // grams
                 ['name' => 'Chili powder', 'quantity' => 10], // grams
                 ['name' => 'Cumin', 'quantity' => 5], // grams
@@ -160,30 +163,26 @@ class RecipeIngredientSeeder extends Seeder
                 ['name' => 'Eggs', 'quantity' => 100], // grams
             ],
             'Roast Chicken' => [
-                ['name' => 'Chicken', 'quantity' => 500], // grams (assuming a whole chicken or parts are available)
+                ['name' => 'Chicken breast', 'quantity' => 500], // grams (assuming a whole chicken or parts are available)
                 ['name' => 'Garlic', 'quantity' => 10], // grams
                 ['name' => 'Rosemary', 'quantity' => 5], // grams (assuming rosemary is an ingredient)
                 ['name' => 'Olive oil', 'quantity' => 20], // milliliters
             ],
             'Vegan Paella' => [
-                ['name' => 'Saffron rice', 'quantity' => 200], // grams (assuming saffron-infused rice is prepared)
-                ['name' => 'Mixed vegetables', 'quantity' => 300], // grams (similar to Vegan Stir Fry)
+                ['name' => 'Arborio Rice', 'quantity' => 200], // grams (assuming saffron-infused rice is prepared)
+                ['name' => 'Carrots', 'quantity' => 150], // grams
+                ['name' => 'Bell peppers', 'quantity' => 150], // grams
+                ['name' => 'Tomatoes', 'quantity' => 200], // grams
                 ['name' => 'Vegetable broth', 'quantity' => 500], // milliliters
             ],
-            'Beef Tacos' => [
-                ['name' => 'Ground beef', 'quantity' => 100], // grams
-                ['name' => 'Taco seasoning', 'quantity' => 30], // grams
-                ['name' => 'Tortillas', 'quantity' => 100], // grams
-                ['name' => 'Cheese', 'quantity' => 30], // grams
-                ['name' => 'Salsa', 'quantity' => 50], // grams
-            ],
+            
             'Pork Chops' => [
                 ['name' => 'Pork chops', 'quantity' => 200], // grams
                 ['name' => 'Apple sauce', 'quantity' => 100], // grams
                 ['name' => 'Rosemary', 'quantity' => 5], // grams
             ],
             'Mushroom Risotto' => [
-                ['name' => 'Arborio rice', 'quantity' => 200], // grams
+                ['name' => 'Arborio Rice', 'quantity' => 200], // grams
                 ['name' => 'Mushrooms', 'quantity' => 150], // grams
                 ['name' => 'Parmesan cheese', 'quantity' => 50], // grams
                 ['name' => 'White wine', 'quantity' => 50], // milliliters
@@ -197,7 +196,13 @@ class RecipeIngredientSeeder extends Seeder
         foreach ($recipeIngredientsData as $recipeName => $ingredients) {
             $recipe = Recipe::where('name', $recipeName)->firstOrFail(); // Get the recipe object
             foreach ($ingredients as $ingredientData) {
-                $ingredient = Ingredient::where('name', $ingredientData['name'])->firstOrFail(); // Get the ingredient object
+                try {
+                    $ingredient = Ingredient::where('name', $ingredientData['name'])->firstOrFail(); // Get the ingredient object
+                } catch (ModelNotFoundException $exception) {
+                    // Log the missing ingredient
+                    Log::warning("Ingredient '{$ingredientData['name']}' not found for recipe '{$recipeName}'");
+                    continue; // Skip adding this ingredient and move to the next one
+                }
                 // Link ingredient to recipe with quantity
                 RecipeIngredient::create([
                     'recipe_id' => $recipe->id,

@@ -29,7 +29,8 @@ return new class extends Migration
             $table->boolean('is_vegetarian')    ->default(true); // Is the ingredient classified as vegetarian?
             $table->boolean('is_vegan')         ->default(true); // Is the ingredient classified as vegan?
 
-            $table->timestamps();
+            $table->timestamps(); // This will add both updated_at and created_at columns
+
         });
     }
 
