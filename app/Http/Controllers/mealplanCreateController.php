@@ -63,7 +63,15 @@ class MealPlanCreateController extends Controller
         // varable to hold the adjustment factor, that will be used to adjust the recipes.
         $adjustmentFactor = $goalCalories / $totalCalories;
 
+        // Creates a new meal plan in the userMealPlan table.
+        $mealPlan = UserMealPlan :: create([
+                'user_id' => $request -> user()->id,
+                 'start_date' => now(),
+                  'end_date' => now() -> addDays($validated['days']), 
+                   'active' => true
+                ]);
 
+ 
         // Redirect to the General workout Page, with success message
         return redirect()->route('mealplan')->with('success', 'Workout created successfully');
     }
