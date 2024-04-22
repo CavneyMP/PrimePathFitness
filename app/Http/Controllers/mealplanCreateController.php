@@ -35,7 +35,9 @@ class MealPlanCreateController extends Controller
         // Validate the data collected from the form.
         $request -> validate([
             'recipes' => 'required|array',
-            'days' => 'required|integer|min:1'
+            'days' => 'required|integer|min:1',
+            'goal_weight' => 'required|in:intensive_loss,moderate_loss,maintain,moderate_gain,extreme_gain'
+            
         ]);
 
         // Logic to Fetch the most recent user metrics from the database.
