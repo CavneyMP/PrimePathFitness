@@ -22,6 +22,12 @@ class MealPlanCreateController extends Controller
         return view('pages.mealplan-create');
     }
 
+
+
+
+
+    // Main store method:
+
     /**
      *  Store the newly created meal plan, takes parameter $request, a provided method for accesing various HTTPS requests from the illuminate pack.
      * Used here to with the validate illumate pack method, to check data pased from form is of correct data type, int, string etc...
@@ -80,9 +86,37 @@ class MealPlanCreateController extends Controller
         // Redirect to the General workout Page, with success message
         return redirect()->route('mealplan')->with('success', 'Workout created successfully');
     }
-        // Function to calculate goal calories
-        protected function calculateGoalCalories(UserMetric $userMetric)
-        {
+
+
+
+
+
+
+    // Other methods used in store function:
+
+
+    /**
+     * Calculates the total caloric content of a recipe based on its ingredients.
+     *
+     * @param Recipe $recipe
+     * @return float Will be the total calories from the recipe by finding the relevant ingrdeients.
+     */
+    protected function calculateRecipeCalories(Recipe $recipe)
+    {
+        return $recipe -> ingredients -> sum(function ($ingredient) {
+            return $ingredient -> pivot -> quantity * $ingredient->calories_per_gram;
+        });
+    }
+
+    /**
+    * Calculates the daily caloric goal based on the user's metrics and goal adjustment factor. 
+    *
+    * @param UserMetric $userMetric
+    * @param string $goalType
+    * @return float Will be the total Kcal target for the user derrived from their TDEE and their fitness goal adjustment factor. 
+    */
+    protected function calculateGoalCalories(UserMetric $userMetric)
+    {
 
         // Mapping new varaible to advised fitness goal.
         $goalWeightAdjustments = [
@@ -95,6 +129,7 @@ class MealPlanCreateController extends Controller
 
         // Fetches the caloric adjusmtnet based on the user goal provided
         $adjustment = $goalWeightAdjustments[$userMetric -> goal_weight] ?? 0;
-        // Return the TDDE + Adjustment value
-        return $userMetric->tdee + $adjustment;    }
+
+    // Return the TDDE + Adjustment value
+    return $userMetric->tdee + $adjustment;    }
 }
