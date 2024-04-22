@@ -18,6 +18,8 @@ class WorkoutController extends Controller
                             ->where('status', 'active') // The methods from Eloquent ORM, here we ar filtering for status and active.
                              ->latest() // Again an ORM method, arranges results in desceding order. 
                               ->first(); // Method retirevies the newest record in the query.
+                              $workout = null; // Initialize $workout to null by default
+
 
         // Pass the included related exercises when fetching
         if ($activeWorkout) { 
