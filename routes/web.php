@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
 
     // MealPlanCreate
     Route::get('/mealplan-create', [MealPlanCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
+    Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store'); // Route to store
+
     });
 
 require __DIR__.'/auth.php';

@@ -15,9 +15,11 @@ class Recipe extends Model
     protected $fillable = [ 'name', 'description', 'mealtype' ];  // $fillable property = ables mass assignment attributes from model
 
     // Defining the Relationship with RecipeIngredient table
-    public function ingredients() // Defines a method from Eloquent
+    public function ingredients() 
     {
-        return $this -> hasMany(RecipeIngredient::class); // hasMany method defines a one-to-many relationship. 1 Recipe has many RecipeIngredients
+        // Many-to-many relationship with pivot data included
+        return $this -> belongsToMany(Ingredient :: class, 'recipe_ingredients')
+            -> withPivot('quantity');
     }
     
 }

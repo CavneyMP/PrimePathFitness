@@ -132,4 +132,26 @@ class MealPlanCreateController extends Controller
 
     // Return the TDDE + Adjustment value
     return $userMetric->tdee + $adjustment;    }
+
+        /**
+     * Adjusts and saves individual recipes to the meal plan with the adjusted quantities.
+     *
+     * @param Recipe $recipe
+     * @param float $adjustmentFactor
+     * @param int $mealPlanId
+     */
+    protected function adjustAndSaveRecipe(Recipe $recipe, $adjustmentFactor, $mealPlanId) 
+    {
+        foreach ($recipe->ingredients as $ingredient) {
+            $adjustedQuantity = $ingredient -> pivot -> quantity * $adjustmentFactor;
+            MealPlanRecipe :: create([
+                'meal_plan_id' => $mealPlanId,
+                 'recipe_id' => $recipe->id,
+                  'adjusted_quantity' => $adjustedQuantity
+
+            ]);
+
+        }
+    }
+
 }

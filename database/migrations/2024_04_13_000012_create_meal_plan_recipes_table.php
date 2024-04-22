@@ -19,7 +19,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('meal_plan_id')->constrained('user_meal_plans'); // FK to `user_meal_plans`
             $table->foreignId('recipe_id')->constrained(); // FK to `recipes`
-            $table->foreignId('ingredient_id')->constrained(); // ID for ingredient
             $table->float('adjusted_quantity');
             $table->timestamps();
         });
