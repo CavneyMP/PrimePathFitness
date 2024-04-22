@@ -53,12 +53,16 @@ class MealPlanCreateController extends Controller
         // Varaible to hold total calories of all recipes.
         // Laravel reduce method to iterate over each recipe.
         // For each recipe we call calculateRecipeCalories, passing the recipe itself.
-         $totalCalories = $recipes -> reduce(function ($carry, $recipe) {
+        $totalCalories = $recipes -> reduce(function ($carry, $recipe) {
             return $carry + $this -> calculateRecipeCalories($recipe);
         }, 0);
 
         // Variable to hold the goal calories.
-        $goalCalories = $this->calculateGoalCalories($userMetric);
+        $goalCalories = $this->calculateGoalCalories($userMetric, $validated ['goal_weight'] );
+
+        // varable to hold the adjustment factor, that will be used to adjust the recipes.
+        $adjustmentFactor = $goalCalories / $totalCalories;
+
 
         // Redirect to the General workout Page, with success message
         return redirect()->route('mealplan')->with('success', 'Workout created successfully');
