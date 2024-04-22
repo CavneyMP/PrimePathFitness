@@ -44,8 +44,16 @@ class MealPlanCreateController extends Controller
         // FirstOrFail will throw the exception if user metrics not found.
         $userMetric = UserMetric :: where('user_id', $request -> user() -> id) -> latest() -> firstOrFail();
 
-         // Retrieves the recipes selected by the user based on their recipe IDs.
+         // Retrieves the recipes selected by the user based on their recipe IDs from the user form
          $recipes = Recipe :: whereIn('id', $validated['recipes']) -> get(); 
+        
+
+        // Varaible to hold total calories of all recipes.
+        // Laravel reduce method to iterate over each recipe.
+        // For each recipe we call calculateRecipeCalories, passing the recipe itself.
+         $totalCalories = $recipes -> reduce(function ($carry, $recipe) {
+            return $carry + $this -> calculateRecipeCalories($recipe);
+        }, 0);
 
 
 
