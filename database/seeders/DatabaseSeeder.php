@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             EquipmentSeeder::class,
             ExerciseSeeder::class,
             RecipeSeeder::class,
+            IngredientSeeder::class,
+            RecipeIngredientSeeder::class,
             // Add other seeders if necessary
             ]);
     }

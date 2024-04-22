@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Recipe; // not yet created
+use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
 
 class RecipeSeeder extends Seeder
