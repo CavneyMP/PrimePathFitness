@@ -1,6 +1,6 @@
 <x-app-layout>
-
 <!-- Header slot, provides page title and breif info -->
+  
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Meal Plan') }}
@@ -18,8 +18,8 @@
     </div>
 
     <x-create-new-mealplan/>
+    <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
 
-    <x-active-mealplan-show/>
 
 
 </x-app-layout>

@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     // Routes for three main pages
     Route:: get('/workout', [WorkoutController::class, 'index'])->name('workout');
-    Route:: get('/mealplan', [MealPlanController::class,'index'])->name('meal');
+    Route:: get('/mealplan', [MealPlanController::class,'showUserMealPlan'])->name('meal');
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
     // WorkoutCreate
