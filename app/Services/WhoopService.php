@@ -110,4 +110,18 @@ class WhoopService
              ]);
         }
     }
+
+    public function fetchAndStoreBodyMetrics(UserMetric $userMetric)
+    {
+        $endpoint = 'v1/user/measurement/body';
+        $bodyMetrics = $this->fetchData($userMetric, $endpoint);
+
+        BodyMetricsData :: create([
+            'user_id' => $userMetric->user_id,
+             'height_meter' => $bodyMetrics['height_meter'],
+              'weight_kilogram' => $bodyMetrics['weight_kilogram'],
+               'max_heart_rate' => $bodyMetrics['max_heart_rate'],
+        ]);
+    }
+
 }

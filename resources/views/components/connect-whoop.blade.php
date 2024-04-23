@@ -8,6 +8,7 @@
                             <h3 class="text-base font-semibold leading-6 text-white">Create a new Meal Plann</h3>
                             <div class="mt-2 max-w-xl text-sm text-gray-300">
                                 <p>For more in depth and accurate metrics, please authorise your Whoop 4.0</p>
+                                <a href="{{ route('whoop.authorize') }}" class="btn btn-primary">Authorize WHOOP Data Access</a>
                             </div>
                         </div>
                         <div class="mt-5 sm:ml-6 sm:mt-0 sm:flex sm:flex-shrink-0 sm:items-center pt-4">
