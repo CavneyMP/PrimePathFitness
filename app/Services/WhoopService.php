@@ -58,6 +58,7 @@ class WhoopService
              ]) -> get("https://api.prod.whoop.com/$endpoint"); 
              // $response will be declared with the response from WHOOP
 
+             //https://developer.whoop.com/api/#tag/Cycle/operation/getCycleById
             // Handle the 401 reponse status (unauthorised)
             if ($response -> status() === 401) {
 
