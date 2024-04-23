@@ -25,6 +25,22 @@ class WhoopService
                'client_secret'     => env('WHOOP_CLIENT_SECRET'),
         ]); 
 
+        // Check response successful using successful() from http client.
+        if ($response -> successful()) {
+
+            // Update the user metric data object
+            $userMetric->update([
+                // store new access token
+                'whoop_access_token' => $response -> json() ['access_token'],
+                // store a new referesh token, but if not to keep the same.
+                'whoop_refresh_token' => $response -> json() ['refresh_token']  ??  $userMetric->whoop_refresh_token,
+
+            ]);
+            
+            // Return the new access token from the json response (using json() method from http client)
+            return $response -> json()['access_token'];
+
         throw new \Exception('');
+        }
     }
 }
