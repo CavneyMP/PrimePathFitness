@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserMetric extends Model
 {
-    protected $fillable = ['user_id', 'age', 'weight', 'height', 'gender' ,'activity_level', 'bmi', 'bmr', 'tdee', 'goal_weight'];  // Fillable array to allow mass assignment.
+     // Fillable array to allow mass assignment.
+
+    protected $fillable = ['user_id', 'age', 'weight', 'height', 'gender' ,
+    'activity_level', 'bmi', 'bmr', 'tdee', 'goal_weight', '
+    whoop_access_token', 'whoop_refresh_token', ]; 
 
 }

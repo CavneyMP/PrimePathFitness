@@ -19,8 +19,7 @@ class WhoopAuthController extends Controller
               'response_type'  => 'code', 
               //Requested data, going to fetch all.
                'scope' => 'read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement',
-               // CSFR protection
-               'state' => 'your_csrf_token_or_unique_string'
+
 
         ]);
             //To O Auth's end point, with $query string.
@@ -35,7 +34,7 @@ class WhoopAuthController extends Controller
 
             // Using laravels HTTP client, we can make a request to the whoop token end point
             // the asForm() method from this client can specify that the request body should be sent as form data.
-        $response = Http :: asForm() -> post('https://api.whoop.com/oauth/token', [
+        $response = Http::asForm()->post('https://api.prod.whoop.com/oauth/oauth2/token', [
 
                     // Parameters require for this request are:
             // To indicate that this is a request for an auth code.
@@ -57,7 +56,7 @@ class WhoopAuthController extends Controller
                 // Extract the access token, using json() method from HTTP clinet
             $accessToken = $response->json()['access_token'];
             // Same again, just for the refresh token as have life times.
-            $refreshToken = $response->json()['access_token'];
+            $refreshToken = $response->json()['refresh_token'];
 
             
             // Store the token in the data base
@@ -75,8 +74,8 @@ class WhoopAuthController extends Controller
                     'whoop_refresh_token' => $refreshToken
                 ]
             );
-            // Redirect the user to the /dashboard
-            return redirect ('/dashboard');
+            // Redirect the user to the /metrics-overview page. 
+            return redirect ('/metrics-overview');
         }
         
         // Alternative redirect, with the error message so we know if its failed.
