@@ -8,6 +8,9 @@ class WhoopAuthController extends Controller
 {
 
     public function redirectToWhoop() { 
+
+        $state   = Str :: random(40); // Using a laravel help to get a random string.
+        $request -> session() -> put('oauth2state', $state); 
         
     // https://www.php.net/manual/en/function.http-build-query.php
         $query = http_build_query([
@@ -19,6 +22,7 @@ class WhoopAuthController extends Controller
               'response_type'  => 'code', 
               //Requested data, going to fetch all.
                'scope' => 'read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement',
+               'state' => $state, // When local testing they want at least 8 bit for CSRF protection.
 
 
         ]);

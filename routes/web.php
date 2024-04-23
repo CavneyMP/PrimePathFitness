@@ -9,6 +9,8 @@ use App\Http\Controllers\MealPlanCreateController;
 use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WhoopAuthController;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -45,7 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store'); // Route to store
 
     // Whoop
-    Route::get('/auth/whoop', [WhoopAuthController::class, 'redirectToWhoop']);
+    Route::get('/auth/whoop', [WhoopAuthController::class, 'redirectToWhoop'])->name('whoop.authorize');
     Route::get('/auth/whoop/callback', [WhoopAuthController::class, 'handleWhoopCallback']);
 
 
