@@ -39,36 +39,32 @@ class WhoopService
 
             // Return the new access token from the json response (using json() method from http client)
             return $response -> json()['access_token'];
+        }      
+          throw new \Exception ('Failed to refresh WHOOP token.') ;
 
-        throw new \Exception ('Failed to refresh WHOOP token.') ;
-
-        }
     }
 
 
-    // Fetch data with param $userMetric data object & $endPoint where dat will be collected
-    public function fetchData(UserMetric $userMetric, $endpoint)
-    {
-             // Presuming the token is up to date to start with.
-             $response = Http :: withHeaders([
-            // Bearer authentication scheme as per oAuth.
-            // Adding the users access token to the header.
-            'Authorization' => "Bearer {$userMetric->whoop_access_token}"
-            // the get HTTP method with URL, with the $endpoint parameter for dynamic retreival.
-             ]) -> get("https://api.prod.whoop.com/$endpoint"); 
-             // $response will be declared with the response from WHOOP
+        public function fetchData(UserMetric $userMetric, $endpoint, $params = [])
+{
+            $url  = "https://api.prod.whoop.com/$endpoint";
+            
+            // Include the parameters for query if provided
+            if (!empty($params)) {
+                    $url .= '?' . http_build_query($params);
+            }
 
-             //https://developer.whoop.com/api/#tag/Cycle/operation/getCycleById
-            // Handle the 401 reponse status (unauthorised)
-            if ($response -> status() === 401) {
+            // First attempt with access token
+            $response = Http::withHeaders([
+                'Authorization' => "Bearer {$userMetric->whoop_access_token}"
+                ])->get($url);
 
-                // If we have 401, it might have expired, so attempt to refresh metho and data object as parameter.
-                $accessToken = $this -> refreshToken($userMetric);
-
-                // Retry same as above just with the new access token
+            // Handle token expiration if this is the issue
+            if ($response->status() === 401) {
+                $accessToken = $this->refreshToken($userMetric);
                 $response = Http::withHeaders([
-                 'Authorization' => "Bearer $accessToken" 
-                ]) -> get ("https://api.prod.whoop.com/$endpoint");
+                    'Authorization' => "Bearer $accessToken"
+                ])->get($url);
             }
 
             // If the response is succesful,
@@ -76,12 +72,24 @@ class WhoopService
                 // then we need to return the extracted json using json() method to $response data object.
                 return $response -> json();
             }
-            throw new \Exception ('We failed to fetch data from WHOOP :(');
-
-    }
-
-
-
-
+            throw new \Exception ('We failed to fetch data from WHOOP :(' . $response->body());
             
+    }
+    
+    public function storeSleepData (array $sleepData)
+    { 
+        foreach ($sleepData as $data) {
+            SleepData :: create([
+                'user_id'                => $data['user_id'],
+                 'start'                  => $data['start'],
+                  'end'                  => $data['end'], 
+                   'timezone_offset'     => $data['timezone_offset'],
+                    'nap'                => $data['nap'],
+                     'score_state'       => $data['score_state'],
+                      'score'            => json_encode($data['score']),
+             ]);
+        }
+    }
+    
+    
 }
