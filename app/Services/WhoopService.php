@@ -75,6 +75,8 @@ class WhoopService
                 // then we need to return the extracted json using json() method to $response data object.
                 return $response -> json();
             }
+            throw new \Exception ('We failed to fetch data from WHOOP :(');
+
     }
 
 
