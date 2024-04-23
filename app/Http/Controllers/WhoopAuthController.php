@@ -75,11 +75,12 @@ class WhoopAuthController extends Controller
                     'whoop_refresh_token' => $refreshToken
                 ]
             );
-
-            return redirect('0'); 
+            // Redirect the user to the /dashboard
+            return redirect ('/dashboard');
         }
-
-        return redirect('0'); 
+        
+        // Alternative redirect, with the error message so we know if its failed.
+        return redirect ('/dashboard') -> withErrors('Failed to authenticate with WHOOP.');
     }
 
 }
