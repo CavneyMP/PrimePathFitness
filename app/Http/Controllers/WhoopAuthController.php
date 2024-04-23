@@ -69,7 +69,7 @@ class WhoopAuthController extends Controller
                 
                 // Finds column where user ID matches the auth'd users ID.
                 ['user_id' => $user->id],
-                // which data to update, with the extracted data.
+                // which data in user metrics to update, with the extracted data.
                 [
                     'whoop_access_token' => $accessToken,
                     'whoop_refresh_token' => $refreshToken

@@ -22,6 +22,8 @@ return new class extends Migration
             $table->float('bmi')->nullable(); // Added column for BMI
             $table->float('bmr')->nullable(); // Added column for BMR
             $table->float('tdee')->nullable(); // Added column for TDEE
+            $table->string('whoop_access_token')->nullable(); // For WHOOP
+            $table->string('whoop_refresh_token')->nullable(); // For WHOOP
             $table->timestamps();
         });
     }
