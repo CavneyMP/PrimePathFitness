@@ -31,4 +31,10 @@ return [
         ],
     ],
 
+    'whoop' => [
+        'client_id' => env('WHOOP_CLIENT_ID'),
+        'client_secret' => env('WHOOP_CLIENT_SECRET'),
+        'redirect' => env('WHOOP_REDIRECT_URL'),
+    ],
+
 ];
