@@ -21,6 +21,17 @@ return new class extends Migration
             $table->boolean('nap');
             $table->string('score_state');
             $table->json('score'); // Store the entire score object as JSON probably best idea
+            /**
+             * Example@:
+             * "score": {
+             *   "stage_summary": {},
+             *"sleep_needed": {},
+             *"respiratory_rate": 16.11328125,
+             *"sleep_performance_percentage": 98,
+             *"sleep_consistency_percentage": 90,
+             *  *"sleep_efficiency_percentage": 91.6953384
+             */
+
             $table->timestamps();
         });
         
