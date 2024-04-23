@@ -45,8 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store'); // Route to store
 
     // Whoop
-    Route::get('/auth/whoop', 'WhoopAuthController@redirectToWhoop');
-    Route::get('/auth/whoop/callback', 'WhoopAuthController@handleWhoopCallback');
+    Route::get('/auth/whoop', [WhoopAuthController::class, 'redirectToWhoop']);
+    Route::get('/auth/whoop/callback', [WhoopAuthController::class, 'handleWhoopCallback']);
 
 
     });
