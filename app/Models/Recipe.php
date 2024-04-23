@@ -17,7 +17,8 @@ class Recipe extends Model
     // Defining the Relationship with RecipeIngredient table
     public function ingredients()
     {
-        return $this->belongsToMany(Ingredient::class, 'meal_plan_recipes')
-                    ->withPivot('adjusted_quantity');
+        return $this->belongsToMany(Ingredient :: class, 'meal_plan_recipes')
+            -> withPivot('adjusted_quantity');
     }
+    
 }

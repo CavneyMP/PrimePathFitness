@@ -33,8 +33,10 @@ public function showUserMealPlan()
         } 
  
         foreach ($recipe->ingredients as $ingredient) {
+    if ($recipes[$recipe->id]->ingredients->pluck('id')->doesntContain($ingredient->id)) {
             $recipes[$recipe->id]->ingredients->push($ingredient); 
-        }
+        }  
+    }
     }
 
          return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);

@@ -18,18 +18,18 @@ class UserMealPlan extends Model
 
     public function recipes()
     { 
-        return $this->hasMany(MealPlanRecipe::class, 'meal_plan_id');
+        return $this->hasMany(MealPlanRecipe:: class, 'meal_plan_id');
     }
 
     public function groupedRecipes()
     {
         return $this->hasManyThrough(
-            Recipe::class,
-            MealPlanRecipe::class,
+            Recipe:: class,
+            MealPlanRecipe:: class,
             'meal_plan_id', // FK on the MealPlanRecipe
-            'id', // FK on the Recipe table
+            'id', // FK on the Recipe table 
             'id', // FK on the UserMealPlan
             'recipe_id' // FK on the MealPlanRecipe 
-        )->with('ingredients');
+        ) ->with ('ingredients');
     }
 }

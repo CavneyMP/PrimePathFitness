@@ -1,4 +1,4 @@
-@if(isset($mealPlan) && $recipes)
+@if(isset($mealPlan) && $mealPlan->groupedRecipes)
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
     <div class="flex justify-between flex-wrap">
     @foreach($recipes as $recipe)
