@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class active-workout-show extends Component
+class activeworkoutshow extends Component
 {
     /**
      * Create a new component instance.
