@@ -18,10 +18,12 @@ class WhoopAuthController extends Controller
               // Specify that the response should return the code.
               'response_type'  => 'code', 
               //Requested data, going to fetch all.
-               'scope' => 'read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement'
+               'scope' => 'read:recovery read:cycles read:sleep read:workout read:profile read:body_measurement',
+               // CSFR protection
+               'state' => 'your_csrf_token_or_unique_string'
 
         ]);
-            //O Auth's end point, with $query string.
+            //To O Auth's end point, with $query string.
         return redirect ('https://api.prod.whoop.com/oauth/oauth2/auth?' . $query);
 
     }
@@ -33,7 +35,7 @@ class WhoopAuthController extends Controller
 
             // Using laravels HTTP client, we can make a request to the whoop token end point
             // the asForm() method from this client can specify that the request body should be sent as form data.
-        $response = Http :: asForm()->post('https://api.whoop.com/oauth/token', [
+        $response = Http :: asForm() -> post('https://api.whoop.com/oauth/token', [
 
                     // Parameters require for this request are:
             // To indicate that this is a request for an auth code.
@@ -49,5 +51,26 @@ class WhoopAuthController extends Controller
                 'code'              => $request->code,
 
         ]);
+
+            // If statement to check that HTTP request was sucessful, with the succesful method from the HTTP client.
+            if ($response->successful()) {
+                // Extract the access token, using json() method from HTTP clinet
+            $accessToken = $response->json()['access_token'];
+            // Same again, just for the refresh token as have life times.
+            $refreshToken = $response->json()['access_token'];
+
+            
+            // Store the token in the data base
+            $user = auth()->user(); 
+            $userM -> userMetrics() -> updateOrCreate(
+            []
+
+            );
+
+            return redirect('0'); 
+        }
+
+        return redirect('0'); 
+    }
 
 }
