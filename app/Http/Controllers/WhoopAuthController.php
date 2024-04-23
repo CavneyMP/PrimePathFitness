@@ -62,9 +62,18 @@ class WhoopAuthController extends Controller
             
             // Store the token in the data base
             $user = auth()->user(); 
-            $userM -> userMetrics() -> updateOrCreate(
-            []
-
+            // Relation between the user and usermetrics model.
+            // Calls the associated data for user metrics.
+            // updateOrCreate method to update or create 
+            $user -> userMetrics() -> updateOrCreate(
+                
+                // Finds column where user ID matches the auth'd users ID.
+                ['user_id' => $user->id],
+                // which data to update, with the extracted data.
+                [
+                    'whoop_access_token' => $accessToken,
+                    'whoop_refresh_token' => $refreshToken
+                ]
             );
 
             return redirect('0'); 
