@@ -36,11 +36,26 @@ class WhoopService
                 'whoop_refresh_token' => $response -> json() ['refresh_token']  ??  $userMetric->whoop_refresh_token,
 
             ]);
-            
+
             // Return the new access token from the json response (using json() method from http client)
             return $response -> json()['access_token'];
 
-        throw new \Exception('');
+        throw new \Exception ('Failed to refresh WHOOP token.') ;
+
         }
     }
+    // Fetch data with param $userMetric data object & $endPoint where dat will be collected
+    public function fetchData(UserMetric $userMetric, $endpoint)
+    {
+             // Presuming the token is up to date to start with.
+             $response = Http :: withHeaders([
+            // Bearer authentication scheme as per oAuth.
+            // Adding the users access token to the header.
+            'Authorization' => "Bearer {$userMetric->whoop_access_token}"
+            // the get HTTP method with URL, with the $endpoint parameter for dynamic retreival.
+             ]) -> get("https://api.prod.whoop.com/$endpoint"); 
+             // $response will be declared with the response from WHOOP
+    
+    }
+            
 }
