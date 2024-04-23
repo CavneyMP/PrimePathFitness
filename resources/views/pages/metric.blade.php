@@ -21,26 +21,33 @@
 
     <!-- metrics-overview.blade.php -->
 
-@php
-$sleepData = App\Models\SleepData::all();
-$bodyMetricsData = App\Models\BodyMetricsData::all();
-@endphp
+                @php
+                
+                $sleepData = App\Models\SleepData::all();
 
-<div>
-    <h2>Sleep Data</h2>
-    <ul>
-        @foreach ($sleepData as $data)
-            <li>{{ $data->start }} to {{ $data->end }}: {{ $data->score }}</li>
-        @endforeach
-    </ul>
+                $bodyMetricsData = App\Models\BodyMetricsData::all();
 
-    <h2>Body Metrics Data</h2>
-    <ul>
-        @foreach ($bodyMetricsData as $data)
-            <li>Height: {{ $data->height_meter }} meters, Weight: {{ $data->weight_kilogram }} kg, Max Heart Rate: {{ $data->max_heart_rate }} bpm</li>
-        @endforeach
-    </ul>
-</div>
+                @endphp
+
+                <div>
+                        <h2>Sleep Data</h2> 
+                        <ul> 
+                            @foreach ($sleepData as $data)
+
+                                <li>{{ $data->start }} to {{ $data->end }}: {{ $data->score }}</li>
+
+                             @endforeach
+                        </ul>
+
+                        <h2> Body Metrics Data</h2>
+                        <ul>
+                            @foreach ($bodyMetricsData as $data)
+
+                                <li>Height: {{ $data->height_meter }} meters, Weight: {{ $data->weight_kilogram }} kg, Max Heart Rate: {{ $data->max_heart_rate }}  bpm</li>
+
+                            @endforeach
+                        </ul>
+                </div>
 
 
 </x-app-layout>
