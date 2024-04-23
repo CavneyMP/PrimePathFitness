@@ -44,6 +44,8 @@ class WhoopService
 
         }
     }
+
+
     // Fetch data with param $userMetric data object & $endPoint where dat will be collected
     public function fetchData(UserMetric $userMetric, $endpoint)
     {
@@ -67,6 +69,16 @@ class WhoopService
                  'Authorization' => "Bearer $accessToken" 
                 ]) -> get ("https://api.prod.whoop.com/$endpoint");
             }
+
+            // If the response is succesful,
+            if ($response -> successful()) {
+                // then we need to return the extracted json using json() method to $response data object.
+                return $response -> json();
+            }
     }
+
+
+
+
             
 }
