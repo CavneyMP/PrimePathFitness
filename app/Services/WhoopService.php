@@ -55,7 +55,18 @@ class WhoopService
             // the get HTTP method with URL, with the $endpoint parameter for dynamic retreival.
              ]) -> get("https://api.prod.whoop.com/$endpoint"); 
              // $response will be declared with the response from WHOOP
-    
+
+            // Handle the 401 reponse status (unauthorised)
+            if ($response -> status() === 401) {
+
+                // If we have 401, it might have expired, so attempt to refresh metho and data object as parameter.
+                $accessToken = $this -> refreshToken($userMetric);
+
+                // Retry same as above just with the new access token
+                $response = Http::withHeaders([
+                 'Authorization' => "Bearer $accessToken" 
+                ]) -> get ("https://api.prod.whoop.com/$endpoint");
+            }
     }
             
 }
