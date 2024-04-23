@@ -44,7 +44,7 @@ class WhoopService
 
     }
 
-
+    // Fetch data with param $userMetric data object & $endPoint where dat will be collected
         public function fetchData(UserMetric $userMetric, $endpoint, $params = [])
 {
             $url  = "https://api.prod.whoop.com/$endpoint";
@@ -63,7 +63,7 @@ class WhoopService
             if ($response->status() === 401) {
                 $accessToken = $this->refreshToken($userMetric);
                 $response = Http::withHeaders([
-                    'Authorization' => "Bearer $accessToken"
+              'Authorization' => "Bearer $accessToken"
                 ])->get($url);
             }
 
@@ -75,6 +75,26 @@ class WhoopService
             throw new \Exception ('We failed to fetch data from WHOOP :(' . $response->body());
             
     }
+
+    public function fetchAllSleepData(UserMetric $userMetric)
+    {
+        $allSleepData = []; // Array for all sleep data
+        $nextToken = null; // Declaration of null next token
+
+        do {
+            $params = ['limit' => 24]; // Whoop state 25 limit, so we'll go with 24
+            if ($nextToken) {
+                $params['nextToken'] = $nextToken;
+            }
+
+            $response = $this -> fetchData($userMetric, 'v1/activity/sleep', $params); 
+            $allSleepData = array_merge($allSleepData, $response['records']); 
+
+            $nextToken = $response['next_token'] ?? null;
+        }  while ($nextToken);
+
+        return $allSleepData;
+}
     
     public function storeSleepData (array $sleepData)
     { 
@@ -90,6 +110,4 @@ class WhoopService
              ]);
         }
     }
-    
-    
 }
