@@ -63,6 +63,15 @@ class WorkoutCreateController extends Controller
                 $legExercises = 
                 break;
 
+            case 'FullBody';
+
+            break;
+
+            case 'UpperLower';
+
+            break;
+
+
             // TODO cases for FullBody and UpperLower
 }
         
