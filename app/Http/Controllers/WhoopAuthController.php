@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class WhoopAuthController extends Controller
 {
 
-    public function redirectToWhoop() { 
+    public function redirectToWhoop(Request $request) {
 
         $state   = Str :: random(40); // Using a laravel help to get a random string.
         $request -> session() -> put('oauth2state', $state); 
