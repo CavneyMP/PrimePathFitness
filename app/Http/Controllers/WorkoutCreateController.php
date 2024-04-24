@@ -49,6 +49,11 @@ class WorkoutCreateController extends Controller
         $exercises = Exercise :: whereIn('equipment_id', $equipmentIds) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
          -> get(); // Retrieve filtered exercises from DB
+
+
+         $pushTypeExercises = collect();
+         $pullTypeExercises = collect();
+         $legTypeExercises = collect();
         
         // Create a new workout instance to populate with data from the form request.
         $workout = new Workout([
