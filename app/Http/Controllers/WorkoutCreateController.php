@@ -51,16 +51,19 @@ class WorkoutCreateController extends Controller
          -> get(); // Retrieve filtered exercises from DB
 
         // Arrays to keep exercises related to each split
-         $pushTypeExercises = collect();
-         $pullTypeExercises = collect();
-         $legTypeExercises = collect();
+         $pushTypeExercises      = collect();
+         $pullTypeExercises      = collect();
+         $legTypeExercises       = collect();
+         $fullBodyTypeExercises  = collect();
+         $upperBodyTypeExercises = collect();
+         $lowerBodyTypeExercises = collect();
 
          //  Depending on the split filter exercises
         switch ($request->workout_split) {
             case 'PPL':
-                $pushExercises = 
-                $pullExercises = 
-                $legExercises = 
+                $pushTypeExercises = 
+                $pullTypeExercises = 
+                $legTypeExercises = 
                 break;
 
             case 'FullBody';
