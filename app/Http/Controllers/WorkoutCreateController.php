@@ -48,7 +48,6 @@ class WorkoutCreateController extends Controller
         // Query the database for exercises that match the selected equipment and preferences and store to variable.
         $exercises = Exercise :: whereIn('equipment_id', $equipmentIds) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
-        ->take(8) // Limit the query to only select the first 7 exercises.
          -> get(); // Retrieve filtered exercises from DB
         
         // Create a new workout instance to populate with data from the form request.
