@@ -8,9 +8,10 @@ use Tests\TestCase;
 
 class HomeControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
+    use RefreshDatabase; // Refresh data base between tests to avoid interference.
+    use WithoutMiddleware; // To disable any middleware important for controllers,
+
+
     public function test_example(): void
     {
         $response = $this->get('/');

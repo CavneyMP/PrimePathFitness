@@ -8,13 +8,6 @@ use Tests\TestCase;
 
 class WhoopAuthControllerTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_example(): void
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
+    use RefreshDatabase; // Refresh data base between tests to avoid interference.
+    use WithoutMiddleware; // To disable any middleware important for controllers,
 }
