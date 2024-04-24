@@ -50,10 +50,21 @@ class WorkoutCreateController extends Controller
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
          -> get(); // Retrieve filtered exercises from DB
 
-
+        // Arrays to keep exercises related to each split
          $pushTypeExercises = collect();
          $pullTypeExercises = collect();
          $legTypeExercises = collect();
+
+         //  Depending on the split filter exercises
+        switch ($request->workout_split) {
+            case 'PPL':
+                $pushExercises = 
+                $pullExercises = 
+                $legExercises = 
+                break;
+
+            // TODO cases for FullBody and UpperLower
+}
         
         // Create a new workout instance to populate with data from the form request.
         $workout = new Workout([
