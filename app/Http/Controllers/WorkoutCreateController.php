@@ -61,9 +61,8 @@ class WorkoutCreateController extends Controller
          //  Depending on the split filter exercises
         switch ($request->workout_split) {
             case 'PPL':
-                $pushTypeExercises = 
-                $pullTypeExercises = 
-                $legTypeExercises = 
+                $pushTypeExercises = $exercises -> filter(function ($exercise) { 
+                    return in_array($exercise -> muscle_group, ['Chest', 'Triceps', 'Shoulders']);
                 break;
 
             case 'FullBody';
@@ -74,7 +73,8 @@ class WorkoutCreateController extends Controller
 
             break;
 
-
+            // https://www.php.net/manual/en/function.in-array.php
+            // https://laravel.com/docs/11.x/collections
             // TODO cases for FullBody and UpperLower
 }
         
