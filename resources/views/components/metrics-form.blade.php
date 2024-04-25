@@ -15,7 +15,7 @@
                 <h2 class="text-xl font-semibold leading-7 text-white">User Metrics</h2>
 
                 <!-- Description -->
-                <p class="text-gray-300">Enter your personal metrics to track your fitness progress.</p>
+                <p class="text-gray-300">Enter your personal metrics to track so we can help your fitness journey!</p>
 
                 <div class="grid grid-cols-1 gap-y-6">
                     <div>
@@ -60,8 +60,7 @@
                     <!-- Dropdown for selecting the type of weight loss -->
                     <div class="grid grid-cols-1 gap-y-6">
                         <div>
-                            <label for="goal_weight" class="block text-sm font-medium text-gray-300">Weight Loss
-                                Type</label>
+                            <label for="goal_weight" class="block text-sm font-medium text-gray-300">Fitness Goal</label>
                             <select id="goal_weight" name="goal_weight" autocomplete="goal_weight"
                                 class="mt-1 block w-full rounded-md bg-gray-700 border-transparent focus:border-gray-600 focus:bg-gray-600 focus:ring-0 text-white">
                                 <option value="intensive_loss">Intensive Weight Loss</option>

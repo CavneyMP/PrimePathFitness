@@ -7,6 +7,4 @@
 
     <x-metrics-form />
 
-    <x-fitness-goal-form />
-
 </x-app-layout>
