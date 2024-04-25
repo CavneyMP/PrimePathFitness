@@ -49,4 +49,28 @@ class MetricsControllerTest extends TestCase
 
         ]);
     }
+
+    /**
+     * Test for ensuring validation failures for metrics storage if data missing.
+     */
+    public function testValidationErrors()
+    {
+        $user = User :: factory()->create();
+        $this -> actingAs($user);
+
+        $response = $this -> post(route('metrics.store'),
+        [
+            'age' => 25, // Pass age only. 
+        ]);
+
+        $response -> assertRedirect(); 
+        $response -> assertSessionHasErrors([
+            
+            'weight', 
+            'height', 
+            'gender', 
+            'activity_level', 
+            'goal_weight'
+        ]);
+    }
 }

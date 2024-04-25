@@ -48,35 +48,8 @@ class WorkoutCreateController extends Controller
         // Query the database for exercises that match the selected equipment and preferences and store to variable.
         $exercises = Exercise :: whereIn('equipment_id', $equipmentIds) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
+        ->take(8) // Limit the query to only select the first 7 exercises.
          -> get(); // Retrieve filtered exercises from DB
-
-        // Arrays to keep exercises related to each split
-         $pushTypeExercises      = collect();
-         $pullTypeExercises      = collect();
-         $legTypeExercises       = collect();
-         $fullBodyTypeExercises  = collect();
-         $upperBodyTypeExercises = collect();
-         $lowerBodyTypeExercises = collect();
-
-         //  Depending on the split filter exercises
-        switch ($request->workout_split) {
-            case 'PPL':
-                $pushTypeExercises = $exercises -> filter(function ($exercise) { 
-                    return in_array($exercise -> muscle_group, ['Chest', 'Triceps', 'Shoulders']);
-                break;
-
-            case 'FullBody';
-
-            break;
-
-            case 'UpperLower';
-
-            break;
-
-            // https://www.php.net/manual/en/function.in-array.php
-            // https://laravel.com/docs/11.x/collections
-            // TODO cases for FullBody and UpperLower
-}
         
         // Create a new workout instance to populate with data from the form request.
         $workout = new Workout([
