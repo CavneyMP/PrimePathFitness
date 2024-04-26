@@ -95,6 +95,7 @@ class MetricsController extends Controller
     
     private function calculateBMR(UserMetric $userMetric) {
         // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
+        
         // Basal metabolic rate
         // Male calculation to calculate BMR
         if ($userMetric->gender === 'Male') {
