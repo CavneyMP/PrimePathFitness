@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MetricsController;
-use App\Http\Controllers\MetricsPageController;
-use App\Http\Controllers\WorkoutController;
+use App\Http\Controllers\MetricsShowController;
+use App\Http\Controllers\WorkoutShowController;
 use App\Http\Controllers\MealPlanController;
 use App\Http\Controllers\MealPlanCreateController;
 use App\Http\Controllers\WorkoutCreateController;
@@ -36,8 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/metrics', [MetricsController::class, 'store'])->name('metrics.store');
 
     // Routes for three main pages
-    Route:: get('/workout-overview', [WorkoutController::class, 'index'])->name('workout');
-    Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
+    Route:: get('/workout-overview', [WorkoutShowController::class, 'index'])->name('workout');
+    Route:: get('/metrics-overview', [MetricsShowController::class, 'index'])->name ('metrics');
 
 // Existing Meal Plan or related task handling
     Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])

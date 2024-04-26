@@ -6,9 +6,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use App\Models\User;
 
 
-class WorkoutControllerTest extends TestCase
+
+class WorkoutShowControllerTest extends TestCase
 {
     use RefreshDatabase; // Refresh data base between tests to avoid interference.
     use WithoutMiddleware; // To disable any middleware important for controllers,

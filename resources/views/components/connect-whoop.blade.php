@@ -8,12 +8,12 @@
                             <h3 class="text-base font-semibold leading-6 text-white">Create a new Meal Plann</h3>
                             <div class="mt-2 max-w-xl text-sm text-gray-300">
                                 <p>For more in depth and accurate metrics, please authorise your Whoop 4.0</p>
-                                <a href="{{ route('whoop.authorize') }}" class="btn btn-primary">Authorize WHOOP Data Access</a>
                             </div>
                         </div>
                         <div class="mt-5 sm:ml-6 sm:mt-0 sm:flex sm:flex-shrink-0 sm:items-center pt-4">
-                            <button type="button"
-                                class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"> Connect Whoop </button>
+                        <a href="{{ route('whoop.authorize') }}" class="btn btn-primary inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Connect Whoop
+                        </a>
                         </div>
                     </div>
                 </div>

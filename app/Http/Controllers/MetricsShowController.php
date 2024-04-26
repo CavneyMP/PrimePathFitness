@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 /**
- * MetricsPageController is responsible for handling the display of the metrics page.
+ * MetricsShowController is responsible for handling the display of the metrics page.
  */
 
-class MetricsPageController extends Controller
+class MetricsShowController extends Controller
 {
     /**
      *  Display the metrics page view.

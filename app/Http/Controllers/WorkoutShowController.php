@@ -7,10 +7,10 @@ use App\Models\Workout;
 use App\Models\UserWorkout;
 
 /**
- *  WorkoutController holds logic for retrieval and display of the active workout for the logged-in user.
+ *  WorkoutShowController holds logic for retrieval and display of the active workout for the logged-in user.
  */
 
-class WorkoutController extends Controller
+class WorkoutShowController extends Controller
 {
     public function index()
     {
