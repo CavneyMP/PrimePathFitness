@@ -19,6 +19,8 @@ class WorkoutController extends Controller
                              ->latest() // Again an ORM method, arranges results in desceding order. 
                               ->first(); // Method retirevies the newest record in the query.
                               $workout = null; // Initialize $workout to null by default
+                              $workoutDays = null; // Initialize $workoutDays to null by default
+
 
         $workoutPlanDays = collect(); // a collection to hold the grouped exercises
 
@@ -26,9 +28,11 @@ class WorkoutController extends Controller
         if ($activeWorkout) { 
          $workout = Workout :: with('exercises') -> find($activeWorkout->workout_id);} // Laravels eager loading syntax, allows to load relationships of exercises with what workout.
         
+    if ($workout !== null) {
          $workoutDays = $workout->exercises
          -> sortBy('pivot.day')
          -> groupBy('pivot.day');
+        }
 
         // return workout blade view
         return view('pages.workout-overview', [
