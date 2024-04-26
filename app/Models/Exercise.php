@@ -13,6 +13,9 @@ class Exercise extends Model
 
     public function equipment() {
         return $this -> belongsTo(Equipment :: class, 'equipment_id');
-
-}
+    }
+    public function workouts() {
+        return $this -> belongsToMany(Workout :: class)
+            -> withPivot('day'); 
+    }
 }

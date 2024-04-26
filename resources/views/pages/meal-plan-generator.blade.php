@@ -1,4 +1,4 @@
-<x-app-layout>
+<!-- <!-- <x-app-layout>
 <!-- Header slot, provides page title and breif info -->
  
 <x-slot name="header">
@@ -17,10 +17,9 @@
         </div>
     </div>
 
-    <x-create-new-mealplan/>
 
     <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
     <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
 
-dddddd
-</x-app-layout>
+dddddd -->
+</x-app-layout> -->

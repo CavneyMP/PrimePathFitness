@@ -20,12 +20,21 @@ class WorkoutController extends Controller
                               ->first(); // Method retirevies the newest record in the query.
                               $workout = null; // Initialize $workout to null by default
 
+        $workoutPlanDays = collect(); // a collection to hold the grouped exercises
 
         // Pass the included related exercises when fetching
         if ($activeWorkout) { 
-            $workout = Workout :: with('exercises') -> find($activeWorkout->workout_id);} // Laravels eager loading syntax, allows to load relationships of exercises with what workout.
+         $workout = Workout :: with('exercises') -> find($activeWorkout->workout_id);} // Laravels eager loading syntax, allows to load relationships of exercises with what workout.
+        
+         $workoutDays = $workout->exercises
+         -> sortBy('pivot.day')
+         -> groupBy('pivot.day');
 
         // return workout blade view
-        return view('pages.workout', ['workout' => $workout]);
+        return view('pages.workout', [
+            'workout' => $workout, 
+            'workoutDays' => $workoutDays
+        ]);
+
     }
 }

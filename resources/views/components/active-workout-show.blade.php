@@ -23,3 +23,4 @@
 @else
     <p>No active workout available.</p>
 @endif
+

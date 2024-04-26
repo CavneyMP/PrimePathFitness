@@ -19,7 +19,7 @@
     
     <x-create-new-workout/>
 
-    <x-active-workout-show :workout="$workout"/>
+    <x-active-workout-show :workout="$workout" :workoutDays="$workoutDays"/>
 
-
+    @dd($workoutDays)
 </x-app-layout>
