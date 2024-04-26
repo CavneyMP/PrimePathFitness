@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-use App\Models\UserMealPlan;
 use Illuminate\Support\Facades\Auth;
 use App\Models\MealPlanRecipe;
 use App\Models\Ingredient;
 use App\Models\Recipe;
+use App\Models\UserMealPlan;
+
 
 /**
  * MealPlanController handles the display of active meal plans for the logged-in user.
@@ -28,13 +27,13 @@ public function showUserMealPlan()
     $recipes = [];
     foreach ($mealPlan -> groupedRecipes as $recipe) {
         if (!isset($recipes[$recipe -> id])) {
-            $recipes[$recipe -> id] = $recipe;
-            $recipes[$recipe -> id] -> ingredients = collect();
+            $recipes[$recipe -> id] = $recipe; 
+             $recipes[$recipe -> id] -> ingredients = collect();
         } 
  
         foreach ($recipe->ingredients as $ingredient) {
-    if ($recipes[$recipe->id]->ingredients->pluck('id')->doesntContain($ingredient->id)) {
-            $recipes[$recipe->id]->ingredients->push($ingredient); 
+    if ($recipes[$recipe -> id] -> ingredients -> pluck('id') -> doesntContain($ingredient -> id)) {
+            $recipes[$recipe -> id] -> ingredients -> push($ingredient); 
         }  
     }
     }

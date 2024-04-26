@@ -10,6 +10,8 @@ use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WhoopAuthController;
+use App\Http\Controllers\MealPlanShowController;
+
 
 
 Route::get('/', function () {
@@ -37,6 +39,11 @@ Route::middleware('auth')->group(function () {
     Route:: get('/workout', [WorkoutController::class, 'index'])->name('workout');
     Route:: get('/mealplan', [MealPlanController::class,'showUserMealPlan'])->name('meal');
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
+
+    // trying to fix this 
+    Route:: get('/mealplan-overview', [MealPlanShowController::class, 'index'])->name ('mealplan');
+    Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])->name('mealplan');
+
 
     // WorkoutCreate
     Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create'); // Route to view.

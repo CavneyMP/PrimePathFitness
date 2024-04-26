@@ -18,6 +18,7 @@
     </div>
 
     <x-create-new-mealplan/>
+    
     <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
 
 
