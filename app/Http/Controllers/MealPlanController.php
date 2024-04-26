@@ -38,5 +38,5 @@ class MealPlanController extends Controller
 //     }
 //     }
 
-//          return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
+//          return view('pages.mealplan-overview', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
 }

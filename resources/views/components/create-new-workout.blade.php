@@ -11,7 +11,7 @@
                             </div>
                         </div>
                         <div class="mt-5 sm:ml-6 sm:mt-0 sm:flex sm:flex-shrink-0 sm:items-center pt-4">
-                        <a href="{{ route('workout-create') }}" class="inline-flex items-center">
+                        <a href="{{ route ('workout-create') }}" class="inline-flex items-center">
                             <button type="button"
                                 class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create
                                 plan</button>

@@ -47,7 +47,7 @@ class MealPlanShowController extends Controller
             Log::info('Prepared Recipes:', $recipes);
     
             // Return the view with the recipe details
-            return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
+            return view('pages.mealplan-overview', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
         } catch (\Exception $e) {
             
             Log::error('Error fetching meal plan:', ['error' => $e -> getMessage()]);
@@ -55,7 +55,7 @@ class MealPlanShowController extends Controller
             $mealPlan = null;
             $recipes = null;
 
-            return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
+            return view('pages.mealplan-overview', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
         }
     }
     

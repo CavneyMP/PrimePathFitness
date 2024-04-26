@@ -21,6 +21,7 @@
         @endforeach
     </div>
 @else
-    <p>No active workout available.</p>
+    <x-no-workout />
+    
 @endif
 

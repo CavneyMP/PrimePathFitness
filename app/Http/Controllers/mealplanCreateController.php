@@ -15,7 +15,7 @@ class MealPlanCreateController extends Controller
 {
     public function index()
     {
-        return view('pages.mealplan-create');
+        return view('pages.mealplan-input-form');
     }
 
     public function store(Request $request)

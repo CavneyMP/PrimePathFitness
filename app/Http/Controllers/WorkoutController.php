@@ -31,7 +31,7 @@ class WorkoutController extends Controller
          -> groupBy('pivot.day');
 
         // return workout blade view
-        return view('pages.workout', [
+        return view('pages.workout-overview', [
             'workout' => $workout, 
             'workoutDays' => $workoutDays
         ]);

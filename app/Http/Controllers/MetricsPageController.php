@@ -18,6 +18,6 @@ class MetricsPageController extends Controller
     public function index()
     {
         // return workout blade view
-        return view('pages.metric');
+        return view('pages.metric-overview');
     }
 }

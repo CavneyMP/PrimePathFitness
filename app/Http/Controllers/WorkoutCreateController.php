@@ -24,7 +24,7 @@ class WorkoutCreateController extends Controller
     public function index()
     {
         // return workout blade view
-        return view('pages.workout-create');
+        return view('pages.workout-input-form');
     }
 
     /**
