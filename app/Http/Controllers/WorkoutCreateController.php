@@ -48,7 +48,7 @@ class WorkoutCreateController extends Controller
         // Query the database for exercises that match the selected equipment and preferences and store to variable.
         $exercises = Exercise :: whereIn('equipment_id', $equipmentIds) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
-        ->take(8) // Limit the query to only select the first 7 exercises.
+        ->take(18) // Limit the query to only select the first 7 exercises.
          -> get(); // Retrieve filtered exercises from DB
         
         // Create a new workout instance to populate with data from the form request.
@@ -61,8 +61,14 @@ class WorkoutCreateController extends Controller
         
         $workout->save(); // Save new workout to the database table
 
-        // We now need to attach selected exercises to workout, uses a many-to-many relationship.
-        $workout->exercises() -> attach($exercises -> pluck('id')->toArray()); // Using pluck to get only the ID of exercises, modified to use toArray()
+        // Split exercises into 3 groups
+        $days = $exercises->split(3); // Laravel's Collection method to split into 3 parts
+    
+        foreach ($days as $index => $dayExercises) {
+            foreach ($dayExercises as $exercise) {
+                $workout->exercises()->attach($exercise->id, ['day' => $index + 1]);
+            }
+        }
 
         UserWorkout::create([
             'user_id' => $request -> user()-> id, // ID o authenticated user.

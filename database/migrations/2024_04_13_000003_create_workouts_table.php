@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name'); //Name of the workout
             $table->text('description'); //Descirption of workout
+            $table->Integer('day') ->nullable(); // Adding 'day' column
             $table->string('type'); //Workout type, cardio, strength...
             $table->timestamps(); //Created_at and updated_at
         });
