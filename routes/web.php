@@ -37,13 +37,11 @@ Route::middleware('auth')->group(function () {
 
     // Routes for three main pages
     Route:: get('/workout-overview', [WorkoutController::class, 'index'])->name('workout');
-    // old meal plan route..
-    // Route:: get('/mealplan', [MealPlanShowController::class,'index'])->name('meal');
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
 // Existing Meal Plan or related task handling
-Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])
-    ->name('mealplan');
+    Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])
+        ->name('mealplan');
 
 
 
