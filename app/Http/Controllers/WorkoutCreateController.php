@@ -66,7 +66,7 @@ class WorkoutCreateController extends Controller
     
         foreach ($days as $index => $dayExercises) {
             foreach ($dayExercises as $exercise) {
-                $workout->exercises()->attach($exercise->id, ['day' => $index + 1]);
+                $workout->exercises() -> attach($exercise -> id, ['day' => $index + 1]);
             }
         }
 

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserMealPlan;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log; // Import Log facade
+use Illuminate\Support\Facades\Log;
 
 class MealPlanShowController extends Controller
 {
@@ -18,7 +18,7 @@ class MealPlanShowController extends Controller
     {
         $userId = Auth::id();
 
-        Log :: info('User ID:', ['id' => $userId]); // Log user ID
+        Log :: info('User ID:', ['id' => $userId]); 
 
         try {
             $mealPlan = UserMealPlan::with(['groupedRecipes.ingredients'])
@@ -37,8 +37,8 @@ class MealPlanShowController extends Controller
                 }
     
                 foreach ($recipe->ingredients as $ingredient) {
-                    if ($recipes[$recipe->id]->ingredients->pluck('id')->doesntContain($ingredient->id)) {
-                        $recipes[$recipe->id]->ingredients->push($ingredient);
+                    if ($recipes[$recipe->id] -> ingredients -> pluck('id')->doesntContain($ingredient->id)) {
+                        $recipes[$recipe->id] -> ingredients -> push($ingredient); 
                     }
                 }
             }
@@ -50,7 +50,10 @@ class MealPlanShowController extends Controller
             return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
         } catch (\Exception $e) {
             
-            Log::error('Error fetching meal plan:', ['error' => $e->getMessage()]);
+            Log::error('Error fetching meal plan:', ['error' => $e -> getMessage()]);
+
+            $mealPlan = null;
+            $recipes = null;
 
             return view('pages.mealplan', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
         }

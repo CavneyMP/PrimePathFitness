@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id(); // PK
             $table->foreignId('workout_id')->constrained()->onDelete('cascade'); // FK to `workouts`
             $table->foreignId('exercise_id')->constrained(); // FK to `exercises`
+            $table->integer('day') ->nullable(); // Add 'day' column after 'exercise_id'
             $table->timestamps();
         });
     }

@@ -36,13 +36,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/metrics', [MetricsController::class, 'store'])->name('metrics.store');
 
     // Routes for three main pages
-    Route:: get('/workout', [WorkoutController::class, 'index'])->name('workout');
-    Route:: get('/mealplan', [MealPlanController::class,'showUserMealPlan'])->name('meal');
+    Route:: get('/workout-overview', [WorkoutController::class, 'index'])->name('workout');
+    // old meal plan route..
+    // Route:: get('/mealplan', [MealPlanShowController::class,'index'])->name('meal');
     Route:: get('/metrics-overview', [MetricsPageController::class, 'index'])->name ('metrics');
 
-    // trying to fix this 
-    Route:: get('/mealplan-overview', [MealPlanShowController::class, 'index'])->name ('mealplan');
-    Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])->name('mealplan');
+// Existing Meal Plan or related task handling
+Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])
+    ->name('mealplan');
+
 
 
     // WorkoutCreate

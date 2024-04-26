@@ -20,7 +20,7 @@
                         {{ __('Workout') }}
                     </x-nav-link>
                     <!-- Meal Plan page -->
-                    <x-nav-link :href="route('meal')" :active="request()->routeIs('meal')">
+                    <x-nav-link :href="route('mealplan')" :active="request()->routeIs('mealplan')">
                         {{ __('Meal Plan') }}
                     </x-nav-link>
                     <!-- Metrics page -->
