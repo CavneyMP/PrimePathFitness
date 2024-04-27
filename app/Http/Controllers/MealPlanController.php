@@ -10,13 +10,13 @@ use App\Models\Recipe;
 use App\Models\UserMealPlan;
 
 
-/**
- * MealPlanController handles the display of active meal plans for the logged-in user.
- */
-class MealPlanController extends Controller
-{
-// public function showUserMealPlan()
+// /**
+//MealPlanController handles the display of active meal plans for the logged-in user.
+//
+class MealPlanController extends Controller {}
 // {
+// // public function showUserMealPlan()
+// // {
 //     $userId = Auth::id();
 //      $mealPlan = UserMealPlan::with(['groupedRecipes.ingredients'])
 //                              ->where('user_id', $userId)
@@ -31,7 +31,7 @@ class MealPlanController extends Controller
 //              $recipes[$recipe -> id] -> ingredients = collect();
 //         } 
  
-//         foreach ($recipe->ingredients as $ingredient) {
+//         foreach ($recipe->isngredients as $ingredient) {
 //     if ($recipes[$recipe -> id] -> ingredients -> pluck('id') -> doesntContain($ingredient -> id)) {
 //             $recipes[$recipe -> id] -> ingredients -> push($ingredient); 
 //         }  
@@ -39,4 +39,3 @@ class MealPlanController extends Controller
 //     }
 
 //          return view('pages.mealplan-overview', ['mealPlan' => $mealPlan, 'recipes' => $recipes]);
-}

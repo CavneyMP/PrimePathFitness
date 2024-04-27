@@ -9,6 +9,9 @@ class UserMetric extends Model
 {
      // Fillable array to allow mass assignment.
 
+     use HasFactory;
+
+
     protected $fillable = ['user_id', 'age', 'weight', 'height', 'gender' ,
     'activity_level', 'bmi', 'bmr', 'tdee', 'goal_weight', '
     whoop_access_token', 'whoop_refresh_token', ]; 
