@@ -17,7 +17,9 @@ class RecipeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' =>       $this -> faker -> sentence(2), // PHP faker will make up a short title for the recipe
+            'description'=> $this -> faker -> text(75), // PHP faker will make up a brief description of the recipe
+            'mealtype' =>   $this -> faker -> randomElement(['breakfast', 'lunch', 'dinner']) // Assign its type of meal
         ];
     }
 }
