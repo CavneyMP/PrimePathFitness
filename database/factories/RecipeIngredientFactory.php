@@ -9,6 +9,10 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class RecipeIngredientFactory extends Factory
 {
+
+    protected $model = RecipeIngredient::class;
+
+
     /**
      * Define the model's default state.
      *

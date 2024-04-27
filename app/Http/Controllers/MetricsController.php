@@ -93,7 +93,7 @@ class MetricsController extends Controller
      * @return float Returns the final result of the users BMR
      */
     
-    private function calculateBMR(UserMetric $userMetric) {
+    public function calculateBMR(UserMetric $userMetric) {
         // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
         
         // Basal metabolic rate
@@ -122,7 +122,7 @@ class MetricsController extends Controller
      * @param  string $activityLevel
      * @return float
      */
-    private function calculateTDEE($bmr, $activityLevel) {
+    public function calculateTDEE($bmr, $activityLevel) {
         // https://www.myprotein.com/thezone/nutrition/how-to-calculate-bmr-tdee/
         // Activty factors for different levels of activity
         $activityFactors = [

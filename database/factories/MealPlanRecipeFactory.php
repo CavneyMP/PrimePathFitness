@@ -9,18 +9,15 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class MealPlanRecipeFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
-    public function definition(): array
+    protected $model = MealPlanRecipe::class;
+
+    public function definition()
     {
         return [
-            'meal_plan_id' => \App\Models\UserMealPlan :: factory(),
-            'recipe_id' => \App\Models\Recipe :: factory(),
-            'ingredient_id' => \App\Models\Ingredient :: factory(),
-            'adjusted_quantity' => $this -> faker -> randomFloat(2, 0.5, 10) // The adjusted quanity the users recevie after plan creation. 
+            'meal_plan_id' => fn() => UserMealPlan :: factory() -> create()->id,
+            'recipe_id' => fn() => Recipe :: factory() -> create() -> id,
+            'ingredient_id' => fn() => Ingredient :: factory()->create() -> id,
+            'adjusted_quantity' => $this -> faker -> randomFloat(2, 0.5, 10)
         ];
-     }
+    }
 }

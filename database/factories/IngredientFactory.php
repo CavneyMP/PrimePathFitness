@@ -3,12 +3,16 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Ingredient;
+
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ingredient>
  */
 class IngredientFactory extends Factory
 {
+    protected $model = Ingredient::class;
+
     /**
      * Define the model's default state.
      *
@@ -22,6 +26,11 @@ class IngredientFactory extends Factory
             'protein_per_gram' =>    $this -> faker -> randomFloat(1, 0,  0.5), 
             'carbs_per_gram'  =>     $this -> faker -> randomFloat(1, 0, 0.5) ,  
             'fats_per_gram' =>       $this -> faker -> randomFloat(1, 0, 0.5),
+            'is_complex_carb' =>     $this -> faker -> boolean,
+            'is_simple_carb' =>      $this -> faker -> boolean,
+            'is_lactose' =>          $this -> faker -> boolean ,
+            'is_vegetarian' =>       $this -> faker -> boolean,
+            'is_vegan' =>            $this -> faker -> boolean
         ]; 
      }
 }

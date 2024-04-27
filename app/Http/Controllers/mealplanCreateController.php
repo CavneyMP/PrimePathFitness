@@ -21,7 +21,7 @@ class MealPlanCreateController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request -> validate([
-            'recipes' => 'required|array|max:3',
+            'recipes' => 'required|array',
         ]);
 
         $userMetric = UserMetric :: where('user_id', $request -> user() -> id) -> latest() -> firstOrFail();

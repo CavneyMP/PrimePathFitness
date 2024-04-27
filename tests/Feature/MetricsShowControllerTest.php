@@ -45,7 +45,7 @@ class MetricsShowControllerTest extends TestCase
                 'height'         => 180,
                 'gender'         => 'Male',
                 'activity_level' => 'Moderately active',
-                'goal_weight'    => 'maintain'
+                'goal_weight'    => 'maintain' 
     
             ]);
         }
@@ -55,7 +55,7 @@ class MetricsShowControllerTest extends TestCase
          */ 
         public function testValidationErrors()
         {
-            $user = User :: factory()->create();
+            $user = User :: factory()->create(); 
             $this -> actingAs($user);
     
             $response = $this -> post(route('metrics.store'),
@@ -73,4 +73,6 @@ class MetricsShowControllerTest extends TestCase
                 'goal_weight'
             ]);
         }
+
+
     }
