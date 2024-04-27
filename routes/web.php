@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MetricsController;
 use App\Http\Controllers\MetricsShowController;
 use App\Http\Controllers\WorkoutShowController;
+use App\Http\Controllers\MealPlanController;
 use App\Http\Controllers\MealPlanCreateController;
 use App\Http\Controllers\WorkoutCreateController;
 use App\Http\Controllers\HomeController;
@@ -38,11 +39,9 @@ Route::middleware('auth')->group(function () {
     Route:: get('/workout-overview', [WorkoutShowController::class, 'index'])->name('workout');
     Route:: get('/metrics-overview', [MetricsShowController::class, 'index'])->name ('metrics');
 
-    // // Existing Meal Plan or related task handling
-    // Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan']) -> name('mealplan');
-    Route::get('/mealplan-create', [MealPlanCreateController::class, 'index'])->name('mealplan-create');
-    Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store');
-    Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])->name('mealplan');
+// Existing Meal Plan or related task handling
+    Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])
+        ->name('mealplan');
 
 
 
@@ -50,9 +49,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create'); // Route to view.
     Route::post('/workout-create', [WorkoutCreateController::class, 'store'])->name('workout-create.store'); // Route to store
 
-    // // MealPlanCreate
-    // Route::get('/mealplan-create', [MealPlanCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
-    // Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store'); // Route to store
+    // MealPlanCreate
+    Route::get('/mealplan-create', [MealPlanCreateController::class, 'index'])->name('mealplan-create'); // Route to view.
+    Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store'); // Route to store
 
     // Whoop
     Route::get('/auth/whoop', [WhoopAuthController::class, 'redirectToWhoop'])->name('whoop.authorize');
