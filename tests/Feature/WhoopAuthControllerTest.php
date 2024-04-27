@@ -2,14 +2,22 @@
 
 namespace Tests\Feature;
 
+use Tests\TestCase;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-
 
 class WhoopAuthControllerTest extends TestCase
 {
-    use RefreshDatabase; // Refresh data base between tests to avoid interference.
-    use WithoutMiddleware; // To disable any middleware important for controllers,
+    use RefreshDatabase, WithFaker;
+
+    public function testSuccessfulRedirectToWhoop()
+    {
+        $user = User :: factory() -> create();
+        $this -> actingAs($user);
+        
+        $response = $this -> get(route('whoop.authorize'));
+        $response -> assertRedirect();
+        $this-> assertNotEmpty(session('oauth2state'), 'The session should have oauth2state set.');
+    }
 }

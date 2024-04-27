@@ -199,7 +199,8 @@ class RecipeIngredientSeeder extends Seeder
                 try {
                     $ingredient = Ingredient::where('name', $ingredientData['name'])->firstOrFail(); // Get the ingredient object
                 } catch (ModelNotFoundException $exception) {
-                    // Log the missing ingredient
+
+                    // Log the missing ingredient, useful for working with seeder. 
                     Log::warning("Ingredient '{$ingredientData['name']}' not found for recipe '{$recipeName}'");
                     continue; // Skip adding this ingredient and move to the next one
                 }

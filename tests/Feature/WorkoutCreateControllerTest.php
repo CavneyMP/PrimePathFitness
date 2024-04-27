@@ -10,6 +10,13 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class WorkoutCreateControllerTest extends TestCase
 {
-    use RefreshDatabase; // Refresh data base between tests to avoid interference.
-    use WithoutMiddleware; // To disable any middleware important for controllers,
+    use RefreshDatabase;
+
+    /**
+     * Test successful workout creation.
+     */
+    public function testSuccessfulWorkoutCreation()
+    {
+
+    }
 }

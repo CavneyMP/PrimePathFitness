@@ -15,8 +15,11 @@ class MealPlanShowControllerTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * Test viewing an active meal plan.
+     */
     public function testCorrectRenderingMealPlanOverviewPage()
     {
-    }
 
+    }
 }
