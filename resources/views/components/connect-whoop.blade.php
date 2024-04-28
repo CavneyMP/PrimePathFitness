@@ -5,7 +5,7 @@
                 <div class="px-4 py-5 sm:p-6">
                     <div class="sm:flex sm:items-start sm:justify-between">
                         <div>
-                            <h3 class="text-base font-semibold leading-6 text-white">Create a new Meal Plann</h3>
+                            <h3 class="text-base font-semibold leading-6 text-white">We can get data from your WHOOP device</h3>
                             <div class="mt-2 max-w-xl text-sm text-gray-300">
                                 <p>For more in depth and accurate metrics, please authorise your Whoop 4.0</p>
                             </div>

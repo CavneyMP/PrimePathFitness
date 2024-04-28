@@ -5,8 +5,8 @@
             @csrf
 
             <!-- Form Title -->
-            <h2 class="text-xl font-semibold leading-7 text-white">Customize Your Workout Plan</h2>
-            <p class="text-gray-300">Select your preferences to generate a tailored workout plan.</p>
+            <h2 class="text-xl font-semibold leading-7 text-white">Create a custom Meal Plan</h2>
+            <p class="text-gray-300">Please select three meals, we'll do the rest.</p>
 
             <!-- Dynamic recipe loading by meal type -->
             @foreach(['breakfast', 'lunch', 'dinner'] as $mealType)
