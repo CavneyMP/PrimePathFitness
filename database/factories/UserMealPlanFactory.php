@@ -6,10 +6,22 @@ use App\Models\User;
 use App\Models\UserMealPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+
+/**
+ * Factory for the UserMealPlan model that creates fake meal plans
+ * Generates date ranges of meal plans
+ */
+
 class UserMealPlanFactory extends Factory
 {
     protected $model = UserMealPlan :: class;
 
+
+    /**
+     * Define the model's default state and fake values of the attributes of meal plans.
+     *
+     * @return array<string, mixed> Attributes of UserMealPlan model.
+     */
     public function definition()
     {
         return [

@@ -7,14 +7,15 @@ use App\Models\Ingredient;
 
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Ingredient>
+ * Factory for creating fake instances of Ingredient data model.
+ * Providing a way to generate test data
  */
 class IngredientFactory extends Factory
 {
     protected $model = Ingredient::class;
 
     /**
-     * Define the model's default state.
+     * Define the model's default state with random values for ingredient.
      *
      * @return array<string, mixed>
      */

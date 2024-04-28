@@ -7,7 +7,9 @@ use App\Models\Recipe;
 
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Recipe>
+ * Factory for creating fake instances of Recipe data model.
+ * Used to generate test recipes: random names, descriptions, and meal types
+ * Providing a way to generate test data
  */
 class RecipeFactory extends Factory
 {

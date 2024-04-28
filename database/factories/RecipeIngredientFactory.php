@@ -5,7 +5,8 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\RecipeIngredient>
+ * Factory for creating fake objects of RecipeIngredient data model.
+ * Links recipes to ingredients with a random quantity to simulate the likely data in the seeder now and in the future.
  */
 class RecipeIngredientFactory extends Factory
 {
@@ -14,7 +15,7 @@ class RecipeIngredientFactory extends Factory
 
 
     /**
-     * Define the model's default state.
+     * Define the model's default state, with a relationship to recipe & ingredient.
      *
      * @return array<string, mixed>
      */

@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\User; 
 
 /**
- * A factory class that we will be using for testin functionaility.
+ * A factory class that we will be using for testing functionaility.
+ * Provides random data for various metrics.
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\UserMetric>
  */
 
@@ -15,6 +16,11 @@ class UserMetricFactory extends Factory
 {
     protected $model = UserMetric :: class;
 
+    /**
+     * Define the data model's state using fake values.
+     *
+     * @return array<string, mixed> Attributes of the UserMetric model
+     */
     public function definition()
     {
         return [

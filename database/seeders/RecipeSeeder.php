@@ -6,6 +6,11 @@ use Illuminate\Database\Seeder;
 use App\Models\Recipe;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * RecipeSeeder, used for mealplan generator.
+ * can be expanded easily, fields just need be unified.
+ */
+
 class RecipeSeeder extends Seeder
 {
     public function run()

@@ -9,6 +9,11 @@ use App\Models\Ingredient;
 
 use Illuminate\Support\Facades\DB;
 
+/**
+ * RecipeIngredientSeeder, used for mealplan generator.
+ * can be expanded easily, fields just need be unified.
+ */
+
 class RecipeIngredientSeeder extends Seeder
 {
     public function run()

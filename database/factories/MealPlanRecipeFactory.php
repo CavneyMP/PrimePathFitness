@@ -5,12 +5,19 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\MealPlanRecipe>
+ * Factory that creates fake instances of MealPlanRecipe data model.
+ * Providing a way to generate test data
+ * 
  */
 class MealPlanRecipeFactory extends Factory
 {
     protected $model = MealPlanRecipe::class;
 
+    /**
+     * Define the model's state with relationships
+     *
+     * @return array<string, mixed>
+     */
     public function definition()
     {
         return [

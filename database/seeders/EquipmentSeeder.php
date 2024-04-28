@@ -6,7 +6,10 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Equipment;
 
-
+/**
+ * Fquipment seeder, used for workwork generator.
+ * can be expanded easily, fields just need be unified.
+ */
 class EquipmentSeeder extends Seeder
 {
     public function run(): void

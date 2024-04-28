@@ -22,8 +22,9 @@ class Exercise extends Model
     public function equipment() {
         return $this -> belongsTo(Equipment :: class, 'equipment_id');
     }
+
     /**
-     * Defines many-to-many relationship with Workout model
+     * Defines many-to-many relationship with Workout data model.
      */
     public function workouts() {
         return $this -> belongsToMany(Workout :: class)

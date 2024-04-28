@@ -6,7 +6,10 @@ use Illuminate\Database\Seeder;
 use App\Models\Exercise;
 use Illuminate\Support\Facades\DB;
 
-
+/**
+ * Exercise seeder, used for workwork generator.
+ * can be expanded easily, fields just need be unified.
+ */
 class ExerciseSeeder extends Seeder
 {
     public function run()
