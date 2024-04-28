@@ -40,8 +40,6 @@ Route::middleware('auth')->group(function () {
     // Routes for three main pages
     Route:: get('/workout-overview', [WorkoutShowController::class, 'index'])->name('workout');
     Route:: get('/metrics-overview', [MetricsShowController::class, 'index'])->name ('metrics');
-
-    // Meal Plan Routes
     Route::get('/mealplan-overview', [MealPlanShowController::class, 'showUserMealPlan'])->name('mealplan');
 
     // Ensure metrics are filled before accessing meal plan creation
@@ -50,15 +48,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/mealplan-create', [MealPlanCreateController::class, 'store'])->name('mealplan-create.store');
     });
 
-    
-
-
-
     // WorkoutCreate
     Route::get('/workout-create', [WorkoutCreateController::class, 'index'])->name('workout-create'); // Route to view.
     Route::post('/workout-create', [WorkoutCreateController::class, 'store'])->name('workout-create.store'); // Route to store
 
-    // Whoop
+    // Whoop routes
     Route::get('/auth/whoop', [WhoopAuthController::class, 'redirectToWhoop'])->name('whoop.authorize');
     Route::get('/auth/whoop/callback', [WhoopAuthController::class, 'handleWhoopCallback']);
 

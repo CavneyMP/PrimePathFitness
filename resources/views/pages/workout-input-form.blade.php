@@ -1,4 +1,5 @@
 <x-app-layout>
+     <!-- Main page to show workout builder form-->
 
 <!-- Header slot, provides page title and breif info -->
 <x-slot name="header">
@@ -16,7 +17,9 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- X component that show form to build workout plan-->
+
     <x-workout-builder />
 
 </x-app-layout>

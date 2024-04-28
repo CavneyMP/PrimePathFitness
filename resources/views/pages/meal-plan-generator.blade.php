@@ -1,5 +1,5 @@
-<!-- <!-- <x-app-layout>
-<!-- Header slot, provides page title and breif info -->
+<!-- Class not used in current dev -->
+
  
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -21,5 +21,4 @@
     <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
     <x-active-mealplan-show :mealPlan="$mealPlan" :recipes="$recipes" />
 
-dddddd -->
-</x-app-layout> -->
+</x-app-layout>

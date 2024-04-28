@@ -1,6 +1,9 @@
 <x-app-layout>
 
 <!-- Header slot, provides page title and breif info -->
+
+<!-- Main page for metrics blade template -->
+
 <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Health Metrics') }}
@@ -17,37 +20,7 @@
         </div>
     </div>
 
+    <!-- X component that show connect to whoop redirect-->
+
     <x-connect-whoop />
-
-    <!-- metrics-overview.blade.php -->
-
-                @php
-                
-                $sleepData = App\Models\SleepData::all();
-
-                $bodyMetricsData = App\Models\BodyMetricsData::all();
-
-                @endphp
-
-                <div>
-                        <h2>Sleep Data</h2> 
-                        <ul> 
-                            @foreach ($sleepData as $data)
-
-                                <li>{{ $data->start }} to {{ $data->end }}: {{ $data->score }}</li>
-
-                             @endforeach
-                        </ul>
-
-                        <h2> Body Metrics Data</h2>
-                        <ul>
-                            @foreach ($bodyMetricsData as $data)
-
-                                <li>Height: {{ $data->height_meter }} meters, Weight: {{ $data->weight_kilogram }} kg, Max Heart Rate: {{ $data->max_heart_rate }}  bpm</li>
-
-                            @endforeach
-                        </ul>
-                </div>
-
-
 </x-app-layout>

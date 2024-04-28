@@ -1,4 +1,5 @@
 <x-app-layout>
+<!-- Main page for meal plan creation form -->
 
 <!-- Header slot, provides page title and breif info -->
 <x-slot name="header">
@@ -16,7 +17,8 @@
             </div>
         </div>
     </div>
-    
+
+    <!-- X component that show form to build meal plan-->
     <x-mealplan-builder />
 
 </x-app-layout>

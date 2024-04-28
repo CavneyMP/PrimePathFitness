@@ -1,4 +1,5 @@
 <x-app-layout>
+<!-- Main page to show the workout-->
 
 <!-- Header slot, provides page title and breif info -->
 <x-slot name="header">
@@ -17,7 +18,11 @@
         </div>
     </div>
     
+        <!-- Link to builder-->
+
     <x-create-new-workout/>
+    
+    <!-- Show case workout plan-->
 
     <x-active-workout-show :workout="$workout" :workoutDays="$workoutDays"/>
 

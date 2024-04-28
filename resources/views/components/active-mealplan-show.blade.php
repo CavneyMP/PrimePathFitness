@@ -1,3 +1,4 @@
+<!-- If meal plan data + grouped recipes are available, get displaying-->
 @if(isset($mealPlan) && $mealPlan->groupedRecipes)
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-4">
     <div class="flex justify-between flex-wrap">
@@ -31,6 +32,7 @@
         @endforeach
     </div>
 </div>
+<!-- If no meal plan data available then show -->
 @else
 <x-no-meal-plan />
 @endif
