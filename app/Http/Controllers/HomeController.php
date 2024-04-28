@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\UserMetric;
 use Illuminate\Support\Facades\Log;
 
-// The home controller class handles the logic for the dashboard page.
+/**
+ * Handles the logic for displaying user dashboard, may include user metrics if form filled /metrics.
+ * Provides a central view for users.
+ */
 class HomeController extends Controller
 {
     /**
      * Display the dashboard view with the latest metrics of the authenticated user.
      * 
      * View returned with dashboard class and binds metric data taken from the user, if any. 
+     *  If no metrics are found, logs a warning message indicating that no metrics were found for the authenticated use (Laravel logs, not user)
      *
-     * @return \Illuminate\View\View
+     * @return \Illuminate\View\View Returns dashboard view, attempts to populate metric.
      */
 
     public function index()
