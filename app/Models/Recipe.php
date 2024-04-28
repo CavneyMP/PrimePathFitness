@@ -5,8 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model; 
 
-// Recipe model class, extends Eloquent allowing interaction with databases.
-
+/**
+ * Represents a recipe used in a meal plan.
+ * Holds information: recipe's ingredients, base quantities.
+ */
 class Recipe extends Model
 { 
     use HasFactory;
@@ -14,12 +16,18 @@ class Recipe extends Model
     // Mass assigable attributes needed for meal planner.
     protected $fillable = [ 'name', 'description', 'mealtype' ];  // $fillable property = ables mass assignment attributes from model
 
-    // Defining the Relationship with RecipeIngredient table
+    /**
+    * Defines many-to-many relationship of Ingredients to adjusted quantities for meal_plan_Recipes.
+    */
     public function ingredients()
     {
         return $this->belongsToMany(Ingredient :: class, 'meal_plan_recipes')
             -> withPivot('adjusted_quantity');
     } 
+
+    /**
+     * Defines the many-to-many relationship of Ingredients with their original quantities.
+     */
     public function originalIngredients()
     {
         return $this->belongsToMany(Ingredient::class, 'recipe_ingredients')
