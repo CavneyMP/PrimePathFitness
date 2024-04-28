@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -58,7 +57,7 @@ class User extends Authenticatable
                 Workout :: class, // Final data model 
                 UserWorkout :: class, // Middle table that links users to workouts
                 'user_id', // Foreign key UserWorkout table
-                 'id', // Foreign key Workout table
+                'id', // Foreign key Workout table
                 'id', // Local Users table
                 'workout_id' // Local UserWorkout table
 
