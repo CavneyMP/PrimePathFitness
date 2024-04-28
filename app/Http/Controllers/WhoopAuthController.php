@@ -5,16 +5,26 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
-
+/**
+ * Looks to handle OAuth authentication flow for the WHOOP API.
+ * logic for redirecting users to WHOOP for auth and processing WHOOP callback.
+ */
 class WhoopAuthController extends Controller
 {
+    /**
+     * Redirects user to WHOOP's authorization page.
+     * Generates a state parameter as they required CSRF protection, looks to construct the authorization URL.
+     *
+     * @param Request $request This will be the HTTP request URL.
+     * @return \Illuminate\Http\RedirectResponse Redirects WHOOP's auth page along with the required parameters.
+     */
 
     public function redirectToWhoop(Request $request) {
 
         $state   = Str :: random(40); // Using a laravel help to get a random string.
         $request -> session() -> put('oauth2state', $state); 
         
-    // https://www.php.net/manual/en/function.http-build-query.php
+       // https://www.php.net/manual/en/function.http-build-query.php
         $query = http_build_query([
             // The clinet ID from the env file.
             'client_id'      => env('WHOOP_CLIENT_ID'),
@@ -28,13 +38,18 @@ class WhoopAuthController extends Controller
 
 
         ]);
-            //To O Auth's end point, with $query string.
+        //To O Auth's end point, with $query string.
         return redirect ('https://api.prod.whoop.com/oauth/oauth2/auth?' . $query);
 
     }
 
-    // Take param request, an isntance of request class, 
-    // Responsible to handle call back once we have been authenticated.
+    /**
+     * Handles the callback of WHOOP's OAuth server.
+     * Exchanges the authorization code for access tokens and stores them in them.
+     *
+     * @param Request $request Will be the incoming request containing the authorization code.
+     * @return \Illuminate\Http\RedirectResponse Redirects a user based on whether success or failure of the token exchange.
+     */
     public function handleWhoopCallback(Request $request)
     {
 
@@ -42,7 +57,7 @@ class WhoopAuthController extends Controller
             // the asForm() method from this client can specify that the request body should be sent as form data.
         $response = Http::asForm()->post('https://api.prod.whoop.com/oauth/oauth2/token', [
 
-                    // Parameters require for this request are:
+            // Parameters require for this request are:
             // To indicate that this is a request for an auth code.
             'grant_type'        => 'authorization_code',
 
@@ -59,7 +74,7 @@ class WhoopAuthController extends Controller
 
             // If statement to check that HTTP request was sucessful, with the succesful method from the HTTP client.
             if ($response->successful()) {
-                // Extract the access token, using json() method from HTTP clinet
+            // Extract the access token, using json() method from HTTP clinet
             $accessToken = $response->json()['access_token'];
             // Same again, just for the refresh token as have life times.
             $refreshToken = $response->json()['refresh_token'];

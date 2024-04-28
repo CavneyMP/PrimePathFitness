@@ -37,7 +37,7 @@ class WorkoutCreateController extends Controller
 
         $request -> validate([ // Validate request data before doing anything 
             'equipment' => 'array|required|min:1', // Ensure equipment provided an array.
-            'preference' => 'array|required|min:1 ', // Ensure exercise preferences provided an dan array.
+            'preference' => 'array|required|min:1 ', // Ensure exercise preferences provided and an array.
             'cardio' => 'array', // Optional cardio equipment choices
             'workout_split' => 'required|string', // Required workout split type, string from form.
         ]);
@@ -48,7 +48,7 @@ class WorkoutCreateController extends Controller
         // Query the database for exercises that match the selected equipment and preferences and store to variable.
         $exercises = Exercise :: whereIn('equipment_id', $equipmentIds) // Filter exercises by equipment ID
         -> whereIn('exercise_type',  $request->preference) // Then filter by the type of exercise.
-        ->take(18) // Limit the query to only select the first 7 exercises.
+        ->take(18) // Limit the query to only select the first 18 exercises.
          -> get(); // Retrieve filtered exercises from DB
         
         // Create a new workout instance to populate with data from the form request.
@@ -71,7 +71,7 @@ class WorkoutCreateController extends Controller
         }
 
         UserWorkout::create([
-            'user_id' => $request -> user()-> id, // ID o authenticated user.
+            'user_id' => $request -> user()-> id, // ID of authenticated user.
             'workout_id' => $workout->id, // The ID of new workout plan.
             'date' => now(), //  Current date and time for the timestamps field.
         ]);
