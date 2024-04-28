@@ -10,12 +10,17 @@ use App\Models\Ingredient;
 use App\Models\UserMealPlan;
 use App\Models\MealPlanRecipe;
 
-
+/**
+ * Tests that ensure functionality of meal plan creation.
+ * Ensures: meal plans are correctly stored, in the database, with associated recipes and ingredients.
+ */
 class MealPlanCreateControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-
+    /**
+     * Test that a meal plan is stored, checks database side is succesful for meal plan storing.
+     */
     public function testStoreMealPlan()
     {
         // Starting by creating the user

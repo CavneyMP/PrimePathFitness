@@ -9,11 +9,16 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use App\Models\User;
 
 
-
+ /**
+  * Tests for metric related actions.
+ */
 class MetricsShowControllerTest extends TestCase
     {
         use RefreshDatabase;
-    
+        
+            /**
+            * Tests for the successful metrics storing
+            */
         public function testSuccessfulMetricsStorage()
         {
             // Create a user and ensure they are verified, was having issue without this

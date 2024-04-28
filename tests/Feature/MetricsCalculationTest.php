@@ -8,10 +8,16 @@ use Tests\TestCase;
 use App\Http\Controllers\MetricsController;
 use App\Models\UserMetric;
 
+
+/**
+ * Tests that ensure the functionality of calculating user metric
+ * Ensures metrics can be stored correctly and validates input on the forms
+ */
+
 class MetricsCalculationTest extends TestCase
 {
     use RefreshDatabase;
-
+    
     public function setUp(): void
     {
         parent::setUp();
@@ -25,6 +31,9 @@ class MetricsCalculationTest extends TestCase
         ]);
     }
 
+    /**
+     * Tests the BMI calculation
+     */
     public function testBMICalculation()
     {
         $bmi = $this->controller->calculateBMI($this->userMetric);
@@ -32,7 +41,9 @@ class MetricsCalculationTest extends TestCase
         $expectedBMI = 70 / (1.8 * 1.8); 
         $this->assertEquals($expectedBMI, $bmi);
     }
-
+    /**
+     * Tests the BMR calculation for a male
+     */
     public function testBMRMaleCalculation()
     {
         $this->userMetric->gender = 'Male';
@@ -41,6 +52,9 @@ class MetricsCalculationTest extends TestCase
         $this->assertEquals($expectedBMR, $bmr);
     }
 
+    /**
+     * Tests the BMR calculation for a female
+     */
     public function testBMRFemaleCalculation()
     {
         $this->userMetric->gender = 'Female';
@@ -50,6 +64,9 @@ class MetricsCalculationTest extends TestCase
         $this->assertEquals($expectedBMR, $bmr);
     }
 
+     /**
+     * Tests TDEE calculation for users
+     */
     public function testTDEECalculation()
     {
         $bmr = (10 * 70) + (6.25 * 180) - (5 * 25) + 5;
